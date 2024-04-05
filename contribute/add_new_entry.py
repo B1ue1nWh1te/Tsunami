@@ -3,11 +3,13 @@ from datetime import datetime
 import os
 import toml
 
+
 def parse_foundry_toml():
     with open("foundry.toml", "r") as toml_file:
         config = toml.load(toml_file)
         rpc_endpoints = config.get("profile", {}).get("default", {}).get("rpc_endpoints", {})
     return rpc_endpoints
+
 
 def update_foundry_toml(rpc_endpoints):
     with open("foundry.toml", "r") as toml_file:
@@ -18,6 +20,7 @@ def update_foundry_toml(rpc_endpoints):
     with open("foundry.toml", "w") as toml_file:
         toml.dump(config, toml_file)
 
+
 def set_explorer_url(network):
     explorer_urls = {
         "mainnet": "https://etherscan.io",
@@ -27,9 +30,10 @@ def set_explorer_url(network):
         "optimism": "https://optimistic.etherscan.io",
         "base": "https://basescan.org",
         "scroll": "https://scrollscan.com",
-        "blast":"https://blastscan.io"
+        "blast": "https://blastscan.io"
     }
     return explorer_urls.get(network, "")
+
 
 def select_network(rpc_endpoints):
     while True:
@@ -59,6 +63,7 @@ def select_network(rpc_endpoints):
             print("Invalid input. Please enter a valid number.")
 
     return selected_network, rpc_endpoints
+
 
 def add_new_entry():
     # Read the rpc_endpoints from foundry.toml
@@ -143,10 +148,12 @@ forge test --contracts ./src/test/{file_name} -vvv
     with open("README.md", "w") as file:
         file.write(updated_content)
 
+
 def replace_placeholders(content, replacements):
     for placeholder, replacement in replacements.items():
         content = content.replace(placeholder, replacement)
     return content
+
 
 def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_contract_address,
                              vulnerable_contract_address, attack_tx_hash, post_mortem_url,
@@ -154,7 +161,7 @@ def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_co
     new_file_name = file_name.replace("_exp.sol", "") + "_exp.sol"
     new_file_path = os.path.join("src", "test", new_file_name)
 
-    with open("./exploit-template.soll", "r") as template_file:
+    with open("./exploit-template.sol", "r") as template_file:
         template_content = template_file.read()
 
     explorer_url = set_explorer_url(selected_network)
@@ -181,5 +188,6 @@ def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_co
 
     with open(new_file_path, "w") as new_file:
         new_file.write(modified_content)
+
 
 add_new_entry()
