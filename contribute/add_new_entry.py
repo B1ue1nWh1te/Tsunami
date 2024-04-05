@@ -21,17 +21,13 @@ def update_foundry_toml(rpc_endpoints):
 def set_explorer_url(network):
     explorer_urls = {
         "mainnet": "https://etherscan.io",
-        "blast":"https://blastscan.io",
-        "optimism": "https://optimistic.etherscan.io",
-        "fantom": "https://ftmscan.com",
-        "arbitrum": "https://arbiscan.io",
         "bsc": "https://bscscan.com",
-        "moonriver": "https://moonriver.moonscan.io",
-        "gnosis": "https://gnosisscan.io",
-        "avalanche": "https://snowtrace.io",
         "polygon": "https://polygonscan.com",
-        "celo": "https://celoscan.io",
-        "base": "https://basescan.org"
+        "arbitrum": "https://arbiscan.io",
+        "optimism": "https://optimistic.etherscan.io",
+        "base": "https://basescan.org",
+        "scroll": "https://scrollscan.com",
+        "blast":"https://blastscan.io"
     }
     return explorer_urls.get(network, "")
 
@@ -158,7 +154,7 @@ def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_co
     new_file_name = file_name.replace("_exp.sol", "") + "_exp.sol"
     new_file_path = os.path.join("src", "test", new_file_name)
 
-    with open("script/Exploit-template_new.sol", "r") as template_file:
+    with open("./exploit-template.soll", "r") as template_file:
         template_content = template_file.read()
 
     explorer_url = set_explorer_url(selected_network)
