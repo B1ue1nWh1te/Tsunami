@@ -211,7 +211,11 @@ interface ICErc20Delegate {
     event Borrow(address borrower, uint256 borrowAmount, uint256 accountBorrows, uint256 totalBorrows);
     event Failure(uint256 error, uint256 info, uint256 detail);
     event LiquidateBorrow(
-        address liquidator, address borrower, uint256 repayAmount, address cTokenCollateral, uint256 seizeTokens
+        address liquidator,
+        address borrower,
+        uint256 repayAmount,
+        address cTokenCollateral,
+        uint256 seizeTokens
     );
     event Mint(address minter, uint256 mintAmount, uint256 mintTokens);
     event NewAdmin(address oldAdmin, address newAdmin);
@@ -221,7 +225,11 @@ interface ICErc20Delegate {
     event NewReserveFactor(uint256 oldReserveFactorMantissa, uint256 newReserveFactorMantissa);
     event Redeem(address redeemer, uint256 redeemAmount, uint256 redeemTokens);
     event RepayBorrow(
-        address payer, address borrower, uint256 repayAmount, uint256 accountBorrows, uint256 totalBorrows
+        address payer,
+        address borrower,
+        uint256 repayAmount,
+        uint256 accountBorrows,
+        uint256 totalBorrows
     );
     event ReservesAdded(address benefactor, uint256 addAmount, uint256 newTotalReserves);
     event ReservesReduced(address admin, uint256 reduceAmount, uint256 newTotalReserves);
@@ -502,7 +510,10 @@ interface IRevest {
     }
 
     event FNFTAddionalDeposited(
-        address indexed from, uint256 indexed newFNFTId, uint256 indexed quantity, uint256 amount
+        address indexed from,
+        uint256 indexed newFNFTId,
+        uint256 indexed quantity,
+        uint256 amount
     );
     event FNFTAddressLockMinted(
         address indexed asset,
@@ -1098,7 +1109,11 @@ interface crETH {
     event Borrow(address borrower, uint256 borrowAmount, uint256 accountBorrows, uint256 totalBorrows);
     event Failure(uint256 error, uint256 info, uint256 detail);
     event LiquidateBorrow(
-        address liquidator, address borrower, uint256 repayAmount, address cTokenCollateral, uint256 seizeTokens
+        address liquidator,
+        address borrower,
+        uint256 repayAmount,
+        address cTokenCollateral,
+        uint256 seizeTokens
     );
     event Mint(address minter, uint256 mintAmount, uint256 mintTokens);
     event NewAdmin(address oldAdmin, address newAdmin);
@@ -1108,7 +1123,11 @@ interface crETH {
     event NewReserveFactor(uint256 oldReserveFactorMantissa, uint256 newReserveFactorMantissa);
     event Redeem(address redeemer, uint256 redeemAmount, uint256 redeemTokens);
     event RepayBorrow(
-        address payer, address borrower, uint256 repayAmount, uint256 accountBorrows, uint256 totalBorrows
+        address payer,
+        address borrower,
+        uint256 repayAmount,
+        uint256 accountBorrows,
+        uint256 totalBorrows
     );
     event ReservesAdded(address benefactor, uint256 addAmount, uint256 newTotalReserves);
     event ReservesReduced(address admin, uint256 reduceAmount, uint256 newTotalReserves);
@@ -1218,7 +1237,11 @@ interface crAMP {
     event Borrow(address borrower, uint256 borrowAmount, uint256 accountBorrows, uint256 totalBorrows);
     event Failure(uint256 error, uint256 info, uint256 detail);
     event LiquidateBorrow(
-        address liquidator, address borrower, uint256 repayAmount, address cTokenCollateral, uint256 seizeTokens
+        address liquidator,
+        address borrower,
+        uint256 repayAmount,
+        address cTokenCollateral,
+        uint256 seizeTokens
     );
     event Mint(address minter, uint256 mintAmount, uint256 mintTokens);
     event NewAdmin(address oldAdmin, address newAdmin);
@@ -1229,7 +1252,11 @@ interface crAMP {
     event NewReserveFactor(uint256 oldReserveFactorMantissa, uint256 newReserveFactorMantissa);
     event Redeem(address redeemer, uint256 redeemAmount, uint256 redeemTokens);
     event RepayBorrow(
-        address payer, address borrower, uint256 repayAmount, uint256 accountBorrows, uint256 totalBorrows
+        address payer,
+        address borrower,
+        uint256 repayAmount,
+        uint256 accountBorrows,
+        uint256 totalBorrows
     );
     event ReservesAdded(address benefactor, uint256 addAmount, uint256 newTotalReserves);
     event ReservesReduced(address admin, uint256 reduceAmount, uint256 newTotalReserves);
@@ -1349,7 +1376,9 @@ interface AMP {
     event ApprovalByPartition(bytes32 indexed partition, address indexed owner, address indexed spender, uint256 value);
     event AuthorizedOperator(address indexed operator, address indexed tokenHolder);
     event AuthorizedOperatorByPartition(
-        bytes32 indexed partition, address indexed operator, address indexed tokenHolder
+        bytes32 indexed partition,
+        address indexed operator,
+        address indexed tokenHolder
     );
     event ChangedPartition(bytes32 indexed fromPartition, bytes32 indexed toPartition, uint256 value);
     event CollateralManagerRegistered(address collateralManager);
@@ -1373,11 +1402,7 @@ interface AMP {
 
     function allowance(address _owner, address _spender) external view returns (uint256);
 
-    function allowanceByPartition(
-        bytes32 _partition,
-        address _owner,
-        address _spender
-    ) external view returns (uint256);
+    function allowanceByPartition(bytes32 _partition, address _owner, address _spender) external view returns (uint256);
 
     function approve(address _spender, uint256 _value) external returns (bool);
 
@@ -1602,13 +1627,7 @@ interface IMasterChef {
 
     function _whitelist(address) external view returns (address);
 
-    function add(
-        uint256 _allocPoint,
-        address _lpToken,
-        uint256 _pooltype,
-        address _ticket,
-        bool _withUpdate
-    ) external;
+    function add(uint256 _allocPoint, address _lpToken, uint256 _pooltype, address _ticket, bool _withUpdate) external;
 
     function admin() external view returns (address);
 
@@ -1689,7 +1708,9 @@ interface IMasterChef {
 
     function pendingT42(uint256 _pid, address _user) external view returns (uint256 pending, uint256 fee);
 
-    function poolInfo(uint256)
+    function poolInfo(
+        uint256
+    )
         external
         view
         returns (
@@ -2029,12 +2050,7 @@ interface IPancakeRouter {
 }
 
 interface GymSinglePool {
-    function depositFromOtherContract(
-        uint256 _depositAmount,
-        uint8 _periodId,
-        bool isUnlocked,
-        address _from
-    ) external;
+    function depositFromOtherContract(uint256 _depositAmount, uint8 _periodId, bool isUnlocked, address _from) external;
 
     function withdraw(uint256 _depositId) external;
 }
@@ -2125,7 +2141,10 @@ interface Pool {
     event MinCollateralRatioUpdated(uint256 _minCollateralRatio);
     event Mint(address minter, uint256 amount, uint256 ftmIn, uint256 fantasmIn, uint256 fee);
     event NewCollateralRatioOptions(
-        uint256 _ratioStepUp, uint256 _ratioStepDown, uint256 _priceBand, uint256 _refreshCooldown
+        uint256 _ratioStepUp,
+        uint256 _ratioStepDown,
+        uint256 _priceBand,
+        uint256 _refreshCooldown
     );
     event NewCollateralRatioSet(uint256 _cr);
     event OracleChanged(address indexed _oracle);
@@ -2149,15 +2168,13 @@ interface Pool {
         uint256 _fantasmIn
     ) external view returns (uint256 _xftmOut, uint256 _minFtmIn, uint256 _minFantasmIn, uint256 _fee);
 
-    function calcRedeem(uint256 _xftmIn)
-        external
-        view
-        returns (uint256 _ftmOut, uint256 _fantasmOut, uint256 _ftmFee, uint256 _requiredFtmBalance);
+    function calcRedeem(
+        uint256 _xftmIn
+    ) external view returns (uint256 _ftmOut, uint256 _fantasmOut, uint256 _ftmFee, uint256 _requiredFtmBalance);
 
-    function calcZapMint(uint256 _ftmIn)
-        external
-        view
-        returns (uint256 _xftmOut, uint256 _fantasmOut, uint256 _ftmFee, uint256 _ftmSwapIn);
+    function calcZapMint(
+        uint256 _ftmIn
+    ) external view returns (uint256 _xftmOut, uint256 _fantasmOut, uint256 _ftmFee, uint256 _ftmSwapIn);
 
     function collateralRatio() external view returns (uint256);
 
@@ -2264,10 +2281,9 @@ interface Pool {
 
     function usableFtmBalance() external view returns (uint256);
 
-    function userInfo(address)
-        external
-        view
-        returns (uint256 xftmBalance, uint256 fantasmBalance, uint256 ftmBalance, uint256 lastAction);
+    function userInfo(
+        address
+    ) external view returns (uint256 xftmBalance, uint256 fantasmBalance, uint256 ftmBalance, uint256 lastAction);
 
     function xftm() external view returns (address);
 
@@ -2344,10 +2360,9 @@ interface Monoswap {
         view
         returns (address _vCash, address _weth, address _feeTo, uint16 _fees, uint16 _devFee);
 
-    function getPool(address _token)
-        external
-        view
-        returns (uint256 poolValue, uint256 tokenBalanceVcashValue, uint256 vcashCredit, uint256 vcashDebt);
+    function getPool(
+        address _token
+    ) external view returns (uint256 poolValue, uint256 tokenBalanceVcashValue, uint256 vcashCredit, uint256 vcashDebt);
 
     function initialize(address _monoXPool, address _vcash) external;
 
@@ -2369,7 +2384,9 @@ interface Monoswap {
 
     function poolSizeMinLimit() external view returns (uint256);
 
-    function pools(address)
+    function pools(
+        address
+    )
         external
         view
         returns (
@@ -2551,7 +2568,11 @@ interface MonoXPool {
     event ApprovalForAll(address indexed account, address indexed operator, bool approved);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
     event TransferBatch(
-        address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] values
+        address indexed operator,
+        address indexed from,
+        address indexed to,
+        uint256[] ids,
+        uint256[] values
     );
     event TransferSingle(address indexed operator, address indexed from, address indexed to, uint256 id, uint256 value);
     event URI(string value, uint256 indexed id);
@@ -2998,10 +3019,9 @@ interface IBalancerVault {
         bytes memory userData
     ) external;
 
-    function getPoolTokens(bytes32 poolId)
-        external
-        view
-        returns (IERC20[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock);
+    function getPoolTokens(
+        bytes32 poolId
+    ) external view returns (IERC20[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock);
 }
 
 interface ICointroller {
@@ -3009,10 +3029,16 @@ interface ICointroller {
     event ActionPaused(address rToken, string action, bool pauseState);
     event ContributorRifiSpeedUpdated(address indexed contributor, uint256 newSpeed);
     event DistributedBorrowerRifi(
-        address indexed rToken, address indexed borrower, uint256 rifiDelta, uint256 rifiBorrowIndex
+        address indexed rToken,
+        address indexed borrower,
+        uint256 rifiDelta,
+        uint256 rifiBorrowIndex
     );
     event DistributedSupplierRifi(
-        address indexed rToken, address indexed supplier, uint256 rifiDelta, uint256 rifiSupplyIndex
+        address indexed rToken,
+        address indexed supplier,
+        uint256 rifiDelta,
+        uint256 rifiSupplyIndex
     );
     event Failure(uint256 error, uint256 info, uint256 detail);
     event MarketEntered(address rToken, address account);
@@ -3238,7 +3264,9 @@ interface IPriceFeed {
 
     function version() external view returns (uint256);
 
-    function getRoundData(uint80 _roundId)
+    function getRoundData(
+        uint80 _roundId
+    )
         external
         view
         returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
@@ -3257,7 +3285,11 @@ interface IRToken {
     event Borrow(address borrower, uint256 borrowAmount, uint256 accountBorrows, uint256 totalBorrows);
     event Failure(uint256 error, uint256 info, uint256 detail);
     event LiquidateBorrow(
-        address liquidator, address borrower, uint256 repayAmount, address rTokenCollateral, uint256 seizeTokens
+        address liquidator,
+        address borrower,
+        uint256 repayAmount,
+        address rTokenCollateral,
+        uint256 seizeTokens
     );
     event Mint(address minter, uint256 mintAmount, uint256 mintTokens);
     event NewAdmin(address oldAdmin, address newAdmin);
@@ -3267,7 +3299,11 @@ interface IRToken {
     event NewReserveFactor(uint256 oldReserveFactorMantissa, uint256 newReserveFactorMantissa);
     event Redeem(address redeemer, uint256 redeemAmount, uint256 redeemTokens);
     event RepayBorrow(
-        address payer, address borrower, uint256 repayAmount, uint256 accountBorrows, uint256 totalBorrows
+        address payer,
+        address borrower,
+        uint256 repayAmount,
+        uint256 accountBorrows,
+        uint256 totalBorrows
     );
     event ReservesAdded(address benefactor, uint256 addAmount, uint256 newTotalReserves);
     event ReservesReduced(address admin, uint256 reduceAmount, uint256 newTotalReserves);
@@ -3401,7 +3437,10 @@ interface IRToken {
 
 interface ISimplePriceOracle {
     event PricePosted(
-        address asset, uint256 previousPriceMantissa, uint256 requestedPriceMantissa, uint256 newPriceMantissa
+        address asset,
+        uint256 previousPriceMantissa,
+        uint256 requestedPriceMantissa,
+        uint256 newPriceMantissa
     );
 
     function getUnderlyingPrice(address rToken) external view returns (uint256);
@@ -3545,7 +3584,9 @@ interface ILendingPool {
      * @return healthFactor the current health factor of the user
      *
      */
-    function getUserAccountData(address user)
+    function getUserAccountData(
+        address user
+    )
         external
         view
         returns (
@@ -3649,7 +3690,6 @@ interface ILendingPoolAddressesProvider {
 interface AToken {
     function redeem(uint256 amount) external;
 }
-
 
 interface VyperContract {
     function add_liquidity(uint256[3] calldata amounts, uint256 min_mint_amount) external;
@@ -3996,15 +4036,9 @@ interface ICurvePool {
 
     function get_virtual_price() external view returns (uint256 out);
 
-    function remove_liquidity(
-        uint256 token_amount,
-        uint256[2] memory min_amounts
-    ) external returns (uint256[2] memory);
+    function remove_liquidity(uint256 token_amount, uint256[2] memory min_amounts) external returns (uint256[2] memory);
 
-    function remove_liquidity(
-        uint256 token_amount,
-        uint256[3] memory min_amounts
-    ) external returns (uint256[3] memory);
+    function remove_liquidity(uint256 token_amount, uint256[3] memory min_amounts) external returns (uint256[3] memory);
 
     function remove_liquidity_imbalance(uint256[3] memory amounts, uint256 max_burn_amount) external;
 
@@ -4020,10 +4054,7 @@ interface IBeanStalk {
 
     function vote(uint32 bip) external;
 
-    function bip(uint32 bipId)
-        external
-        view
-        returns (address, uint32, uint32, bool, int256, uint128, uint256, uint256);
+    function bip(uint32 bipId) external view returns (address, uint32, uint32, bool, int256, uint128, uint256, uint256);
 
     struct FacetCut {
         address facetAddress;
@@ -4046,7 +4077,8 @@ library TransferHelper {
         // bytes4(keccak256(bytes('approve(address,uint256)')));
         (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0x095ea7b3, to, value));
         require(
-            success && (data.length == 0 || abi.decode(data, (bool))), "TransferHelper::safeApprove: approve failed"
+            success && (data.length == 0 || abi.decode(data, (bool))),
+            "TransferHelper::safeApprove: approve failed"
         );
     }
 
@@ -4054,7 +4086,8 @@ library TransferHelper {
         // bytes4(keccak256(bytes('transfer(address,uint256)')));
         (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0xa9059cbb, to, value));
         require(
-            success && (data.length == 0 || abi.decode(data, (bool))), "TransferHelper::safeTransfer: transfer failed"
+            success && (data.length == 0 || abi.decode(data, (bool))),
+            "TransferHelper::safeTransfer: transfer failed"
         );
     }
 
@@ -4068,7 +4101,7 @@ library TransferHelper {
     }
 
     function safeTransferETH(address to, uint256 value) internal {
-        (bool success,) = to.call{value: value}(new bytes(0));
+        (bool success, ) = to.call{value: value}(new bytes(0));
         require(success, "TransferHelper::safeTransferETH: ETH transfer failed");
     }
 }
@@ -4243,7 +4276,9 @@ interface IOmni {
         address onBehalfOf
     ) external;
 
-    function getUserAccountData(address user)
+    function getUserAccountData(
+        address user
+    )
         external
         view
         returns (
@@ -4513,7 +4548,9 @@ interface INonfungiblePositionManager is IPoolInitializer {
 
     event Collect(uint256 indexed tokenId, address recipient, uint256 amount0, uint256 amount1);
 
-    function positions(uint256 tokenId)
+    function positions(
+        uint256 tokenId
+    )
         external
         view
         returns (
@@ -4545,10 +4582,9 @@ interface INonfungiblePositionManager is IPoolInitializer {
         uint256 deadline;
     }
 
-    function mint(MintParams calldata params)
-        external
-        payable
-        returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
+    function mint(
+        MintParams calldata params
+    ) external payable returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct IncreaseLiquidityParams {
         uint256 tokenId;
@@ -4559,10 +4595,9 @@ interface INonfungiblePositionManager is IPoolInitializer {
         uint256 deadline;
     }
 
-    function increaseLiquidity(IncreaseLiquidityParams calldata params)
-        external
-        payable
-        returns (uint128 liquidity, uint256 amount0, uint256 amount1);
+    function increaseLiquidity(
+        IncreaseLiquidityParams calldata params
+    ) external payable returns (uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct DecreaseLiquidityParams {
         uint256 tokenId;
@@ -4572,10 +4607,9 @@ interface INonfungiblePositionManager is IPoolInitializer {
         uint256 deadline;
     }
 
-    function decreaseLiquidity(DecreaseLiquidityParams calldata params)
-        external
-        payable
-        returns (uint256 amount0, uint256 amount1);
+    function decreaseLiquidity(
+        DecreaseLiquidityParams calldata params
+    ) external payable returns (uint256 amount0, uint256 amount1);
 
     struct CollectParams {
         uint256 tokenId;
@@ -4663,7 +4697,9 @@ library FixedPointMathLib {
         /// @solidity memory-safe-assembly
         assembly {
             // Equivalent to require(denominator != 0 && (y == 0 || x <= type(uint256).max / y))
-            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) { revert(0, 0) }
+            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) {
+                revert(0, 0)
+            }
 
             // Divide x * y by the denominator.
             z := div(mul(x, y), denominator)
@@ -4674,7 +4710,9 @@ library FixedPointMathLib {
         /// @solidity memory-safe-assembly
         assembly {
             // Equivalent to require(denominator != 0 && (y == 0 || x <= type(uint256).max / y))
-            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) { revert(0, 0) }
+            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) {
+                revert(0, 0)
+            }
 
             // If x * y modulo the denominator is strictly greater than 0,
             // 1 is added to round up the division of x * y by the denominator.
@@ -4720,7 +4758,9 @@ library FixedPointMathLib {
                 } {
                     // Revert immediately if x ** 2 would overflow.
                     // Equivalent to iszero(eq(div(xx, x), x)) here.
-                    if shr(128, x) { revert(0, 0) }
+                    if shr(128, x) {
+                        revert(0, 0)
+                    }
 
                     // Store x squared.
                     let xx := mul(x, x)
@@ -4729,7 +4769,9 @@ library FixedPointMathLib {
                     let xxRound := add(xx, half)
 
                     // Revert if xx + half overflowed.
-                    if lt(xxRound, xx) { revert(0, 0) }
+                    if lt(xxRound, xx) {
+                        revert(0, 0)
+                    }
 
                     // Set x to scaled xxRound.
                     x := div(xxRound, scalar)
@@ -4742,14 +4784,18 @@ library FixedPointMathLib {
                         // If z * x overflowed:
                         if iszero(eq(div(zx, x), z)) {
                             // Revert if x is non-zero.
-                            if iszero(iszero(x)) { revert(0, 0) }
+                            if iszero(iszero(x)) {
+                                revert(0, 0)
+                            }
                         }
 
                         // Round to the nearest number.
                         let zxRound := add(zx, half)
 
                         // Revert if zx + half overflowed.
-                        if lt(zxRound, zx) { revert(0, 0) }
+                        if lt(zxRound, zx) {
+                            revert(0, 0)
+                        }
 
                         // Return properly scaled zxRound.
                         z := div(zxRound, scalar)
@@ -4891,17 +4937,16 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 36), and(to, 0xffffffffffffffffffffffffffffffffffffffff)) // Append and mask the "to" argument.
             mstore(add(freeMemoryPointer, 68), amount) // Append the "amount" argument. Masking not required as it's a full 32 byte type.
 
-            success :=
-                and(
-                    // Set success to whether the call reverted, if not we check it either
-                    // returned exactly 1 (can't just be non-zero data), or had no return data.
-                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                    // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
-                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                    // Counterintuitively, this call must be positioned second to the or() call in the
-                    // surrounding and() call or else returndatasize() will be zero during the computation.
-                    call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
-                )
+            success := and(
+                // Set success to whether the call reverted, if not we check it either
+                // returned exactly 1 (can't just be non-zero data), or had no return data.
+                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
+                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                // Counterintuitively, this call must be positioned second to the or() call in the
+                // surrounding and() call or else returndatasize() will be zero during the computation.
+                call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
+            )
         }
 
         require(success, "TRANSFER_FROM_FAILED");
@@ -4920,17 +4965,16 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), and(to, 0xffffffffffffffffffffffffffffffffffffffff)) // Append and mask the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument. Masking not required as it's a full 32 byte type.
 
-            success :=
-                and(
-                    // Set success to whether the call reverted, if not we check it either
-                    // returned exactly 1 (can't just be non-zero data), or had no return data.
-                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                    // Counterintuitively, this call must be positioned second to the or() call in the
-                    // surrounding and() call or else returndatasize() will be zero during the computation.
-                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-                )
+            success := and(
+                // Set success to whether the call reverted, if not we check it either
+                // returned exactly 1 (can't just be non-zero data), or had no return data.
+                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                // Counterintuitively, this call must be positioned second to the or() call in the
+                // surrounding and() call or else returndatasize() will be zero during the computation.
+                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+            )
         }
 
         require(success, "TRANSFER_FAILED");
@@ -4949,17 +4993,16 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), and(to, 0xffffffffffffffffffffffffffffffffffffffff)) // Append and mask the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument. Masking not required as it's a full 32 byte type.
 
-            success :=
-                and(
-                    // Set success to whether the call reverted, if not we check it either
-                    // returned exactly 1 (can't just be non-zero data), or had no return data.
-                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                    // Counterintuitively, this call must be positioned second to the or() call in the
-                    // surrounding and() call or else returndatasize() will be zero during the computation.
-                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-                )
+            success := and(
+                // Set success to whether the call reverted, if not we check it either
+                // returned exactly 1 (can't just be non-zero data), or had no return data.
+                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                // Counterintuitively, this call must be positioned second to the or() call in the
+                // surrounding and() call or else returndatasize() will be zero during the computation.
+                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+            )
         }
 
         require(success, "APPROVE_FAILED");
@@ -5026,11 +5069,7 @@ interface IPancakeV3PoolActions {
         uint128 amount1Requested
     ) external returns (uint128 amount0, uint128 amount1);
 
-    function burn(
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount
-    ) external returns (uint256 amount0, uint256 amount1);
+    function burn(int24 tickLower, int24 tickUpper, uint128 amount) external returns (uint256 amount0, uint256 amount1);
 
     function swap(
         address recipient,
@@ -5046,10 +5085,9 @@ interface IPancakeV3PoolActions {
 }
 
 interface IPancakeV3PoolDerivedState {
-    function observe(uint32[] calldata secondsAgos)
-        external
-        view
-        returns (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s);
+    function observe(
+        uint32[] calldata secondsAgos
+    ) external view returns (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s);
 
     function snapshotCumulativesInside(
         int24 tickLower,
@@ -5093,7 +5131,9 @@ interface IPancakeV3PoolState {
 
     function liquidity() external view returns (uint128);
 
-    function ticks(int24 tick)
+    function ticks(
+        int24 tick
+    )
         external
         view
         returns (
@@ -5109,7 +5149,9 @@ interface IPancakeV3PoolState {
 
     function tickBitmap(int16 wordPosition) external view returns (uint256);
 
-    function positions(bytes32 key)
+    function positions(
+        bytes32 key
+    )
         external
         view
         returns (
@@ -5120,7 +5162,9 @@ interface IPancakeV3PoolState {
             uint128 tokensOwed1
         );
 
-    function observations(uint256 index)
+    function observations(
+        uint256 index
+    )
         external
         view
         returns (
