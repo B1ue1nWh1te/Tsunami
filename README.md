@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-417 incidents included.
+418 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -23,7 +23,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 All articles are also published on [Substack](https://defihacklabs.substack.com/).
 
-### OnChain transaction debugging (Ongoing)
+### OnChain transaction debugging
 
 - Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) | [Vietnamese](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/vi) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/ko) | [Spanish](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/es) )
 - Lesson 2: Warm up ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/ko) )
@@ -33,7 +33,18 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 6: Write Your Own PoC (Reentrancy) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/) )
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
+## Donate us
+If you appreciate our work, please consider donating. Even a small amount helps us continue developing and improving our projects, and promoting web3 security.
+- EVM Chains - 0xD7d6215b4EF4b9B5f40baea48F41047Eb67a11D5
+
+## DeFiHackLabs Sponsors 
+- Stay tuned!
+
 ## List of Past DeFi Incidents
+
+[20240529 SCROLL](#20240529-SCROLL---integer-underflow)
+
+[20240526 NORMIE](#20240526-normie---business-logic-flaw)
 
 [20240522 Burner](#20240522-Burner---sandwich-ack)
 
@@ -907,12 +918,48 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240529 SCROLL - Integer Underflow
+
+### Lost: 76 ETH
+
+```sh
+forge test --contracts ./src/test/2024-05/SCROLL_exp.sol -vvv
+```
+#### Contract
+
+[SCROLL_exp.sol](src/test/2024-05/SCROLL_exp.sol)
+
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1795650745448169741
+
+---
+
+### 20240526 NORMIE - Business Logic Flaw
+
+### Lost: $490K
+
+```sh
+forge test --contracts ./src/test/2024-05/NORMIE_exp.sol -vv
+```
+#### Contract
+
+[NORMIE_exp.sol](src/test/2024-05/NORMIE_exp.sol)
+
+
+### Link reference
+
+https://x.com/lookonchain/status/1794680612399542672
+
+---
+
 ### 20240522 Burner - sandwich ack
 
 ### Lost: 1.7 eth
 
 ```sh
-forge test --contracts .\src\test\2024-05\Burner_exp.sol -vv
+forge test --contracts ./src/test/2024-05/Burner_exp.sol -vv
 ```
 #### Contract
 
