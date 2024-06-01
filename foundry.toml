@@ -3,7 +3,7 @@ src = 'src'
 out = 'out'
 libs = ['lib']
 
-rpc_endpoints = { mainnet = "https://rpc.ankr.com/eth", bsc = "https://rpc.ankr.com/bsc", polygon = "https://rpc.ankr.com/polygon", arbitrum = "https://rpc.ankr.com/arbitrum", optimism = "https://rpc.ankr.com/optimism", base = "https://rpc.ankr.com/base", scroll = "https://rpc.ankr.com/scroll", blast = "https://rpc.ankr.com/blast" }
+rpc_endpoints = { mainnet = "https://rpc.ankr.com/eth", bsc = "https://rpc.ankr.com/bsc", polygon = "https://rpc.ankr.com/polygon", arbitrum = "https://rpc.ankr.com/arbitrum", optimism = "https://rpc.ankr.com/optimism", base = "https://rpc.ankr.com/base", scroll = "https://rpc.ankr.com/scroll" }
 
 [fmt]
 line_length = 120
