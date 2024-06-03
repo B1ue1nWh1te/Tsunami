@@ -27,6 +27,21 @@ interface IWETH9 is IERC20 {
     function withdraw(uint wad) external;
 }
 
+interface IERC20Permit is IERC20 {
+    function nonces(address owner) external view returns (uint256);
+    function DOMAIN_SEPARATOR() external view returns (bytes32);
+
+    function permit(
+        address owner,
+        address spender,
+        uint256 value,
+        uint256 deadline,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external;
+}
+
 interface IERC165 {
     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 }
@@ -126,21 +141,6 @@ interface IERC1271 {
     function isValidSignature(bytes32 hash, bytes memory signature) external view returns (bytes4 magicValue);
 }
 
-interface IERC2612 is IERC20 {
-    function nonces(address owner) external view returns (uint256);
-    function DOMAIN_SEPARATOR() external view returns (bytes32);
-
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
-}
-
 interface IERC3156FlashLender {
     function maxFlashLoan(address token) external view returns (uint256);
     function flashFee(address token, uint256 amount) external view returns (uint256);
@@ -152,6 +152,7 @@ interface IERC3156FlashLender {
         bytes calldata data
     ) external returns (bool);
 }
+
 interface IERC3156FlashBorrower {
     function onFlashLoan(
         address initiator,

