@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-182 incidents included.
+188 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -15,6 +15,8 @@
 [20231217 FloorProtocol](#20231217-floorprotocol---business-logic-flaw)
 
 [20231216 GoodDollar](#20231216-gooddollar---lack-of-input-validation--reentrancy)
+
+[20231216 KEST](#20231216-kest---business-logic-flaw)
 
 [20231216 NFTTrader](#20231216-nfttrader---reentrancy)
 
@@ -32,7 +34,13 @@
 
 [20231130 CAROLProtocol](#20231130-carolprotocol---price-manipulation-via-reentrancy)
 
+[20231129 Burntbubba](#20231129-burntbubba---price-manipulation)
+
 [20231129 AIS](#20231129-ais---access-control)
+
+[20231128 FiberRouter](#20231128-FiberRouter---input-validation)
+
+[20231125 MetaLend](#20231125-metalend---compoundv2-inflation-attack)
 
 [20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
 
@@ -41,6 +49,8 @@
 [20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
 
 [20231117 ShibaToken](#20231117-shibatoken---business-logic-flaw)
+
+[20231115 XAI](#20231115-xai---business-logic-flaw)
 
 [20231115 LinkDAO](#20231115-linkdao---bad-k-value-verification)
 
@@ -87,6 +97,8 @@
 [20231012 Platypus](#20231012-platypus---business-logic-flaw)
 
 [20231011 BH](#20231011-bh---price-manipulation)
+
+[20231008 ZS](#20231008-zs---business-logic-flaw)
 
 [20231008 pSeudoEth](#20231008-pseudoeth---pool-manipulation)
 
@@ -490,6 +502,24 @@ https://twitter.com/MetaSec_xyz/status/1736428284756607386
 
 ---
 
+### 20231216 KEST - Business Logic Flaw
+
+### Lost: ~$2.3K
+
+```
+forge test --contracts src/test/2023-12/KEST_exp.sol -vvv
+```
+
+#### Contract
+
+[KEST_exp.sol](../../src/test/2023-12/KEST_exp.sol)
+
+#### Link reference
+
+https://x.com/MetaSec_xyz/status/1736077719849623718
+
+---
+
 ### 20231216 NFTTrader - Reentrancy
 
 ### Lost: ~$3M
@@ -527,8 +557,6 @@ forge test --contracts ./src/test/2023-12/HYPR_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1735197818883588574
-
-https://twitter.com/MevRefund/status/1734791082376941810
 
 ---
 
@@ -652,6 +680,26 @@ https://x.com/MetaSec_xyz/status/1730496513359647167
 
 ---
 
+### 20231129 Burntbubba - Price Manipulation
+
+### Lost: ~$3K
+
+Testing
+
+```sh
+forge test --contracts src/test/2023-11/Burntbubba_exp.sol -vvv
+```
+
+#### Contract
+
+[Burntbubba_exp.sol](../../src/test/2023-11/Burntbubba_exp.sol)
+
+#### Link reference
+
+https://x.com/MetaSec_xyz/status/1730044259087315046
+
+---
+
 ### 20231129 AIS - Access Control
 
 ### Lost: ~$61k
@@ -669,6 +717,46 @@ forge test --contracts ./src/test/2023-11/AIS_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1729861048004391306
+
+---
+
+### 20231128 FiberRouter - input validation
+
+### Lost: 18 eth
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2023-11/FiberRouter_exp.sol -vvv
+```
+
+#### Contract
+
+[FiberRouter_exp.sol](../../src/test/2023-11/FiberRouter_exp.sol)
+
+#### Link reference
+
+https://x.com/MetaSec_xyz/status/1729323254610002277
+
+---
+
+### 20231125 MetaLend - CompoundV2 Inflation Attack
+
+### Lost: ~$4K
+
+Test
+
+```
+forge test --contracts src/test/2023-11/MetaLend_exp.sol -vvv
+```
+
+#### Contract
+
+[MetaLend_exp.sol](../../src/test/2023-11/MetaLend_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1728424965257691173
 
 ---
 
@@ -751,6 +839,26 @@ forge test --contracts ./src/test/2023-11/ShibaToken_exp.sol -vvv
 #### Contract
 
 [ShibaToken_exp.sol](../../src/test/2023-11/ShibaToken_exp.sol)
+
+---
+
+### 20231115 XAI - Business Logic Flaw
+
+### Lost: Unclear
+
+Test
+
+```
+forge test --contracts src/test/2023-11/XAI_exp.sol -vvv
+```
+
+#### Contract
+
+[XAI_exp.sol](../../src/test/2023-11/XAI_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1724683082064855455
 
 ---
 
@@ -1229,6 +1337,26 @@ forge test --contracts ./src/test/2023-10/BH_exp.sol -vvv
 https://twitter.com/BeosinAlert/status/1712139760813375973
 
 https://twitter.com/DecurityHQ/status/1712118881425203350
+
+---
+
+### 20231008 ZS - Business Logic Flaw
+
+### Lost: ~$14K
+
+Test
+
+```
+forge test --contracts ./src/test/2023-10/ZS_exp.sol -vvv
+```
+
+#### Contract
+
+[ZS_exp.sol](../../src/test/2023-10/ZS_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1711189697534513327
 
 ---
 
