@@ -8,8 +8,6 @@ mainnet = "https://rpc.ankr.com/eth"
 bsc = "https://rpc.ankr.com/bsc"
 base = "https://rpc.ankr.com/base"
 
-# See more config options https://github.com/gakonst/foundry/tree/master/config
-
 [fmt]
 line_length = 120
 tab_width = 4
