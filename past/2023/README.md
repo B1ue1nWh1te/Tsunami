@@ -2,15 +2,23 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-188 incidents included.
+206 incidents included.
+
+[20231231 Channels BUSD&USDC](past/2023/README.md#20231231-channels---price-manipulation)
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
+
+[20231228 DominoTT](#20231228-DominoTT---precision-loss)
+
+[20231228 CCV](#20231228-CCV---precision-loss)
 
 [20231225 Telcoin](#20231225-telcoin---storage-collision)
 
 [20231222 PineProtocol](#20231222-pineprotocol---business-logic-flaw)
 
 [20231220 TransitFinance](#20231220-transitfinance---lack-of-validation-pool)
+
+[20231217 Bob](#20231217-bob---price-manipulation)
 
 [20231217 FloorProtocol](#20231217-floorprotocol---business-logic-flaw)
 
@@ -20,7 +28,11 @@
 
 [20231216 NFTTrader](#20231216-nfttrader---reentrancy)
 
+[20231214 PHIL](#20231214-PHIL---business-logic-flaw)
+
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
+
+[20231207 HNet](#20231207-HNet---business-logic-flaw)
 
 [20231206 TIME](#20231206-time---arbitrary-address-spoofing-attack)
 
@@ -50,6 +62,10 @@
 
 [20231117 ShibaToken](#20231117-shibatoken---business-logic-flaw)
 
+[20231116 WECO](#20231116-weco---business-logic-flaw)
+
+[20231115 EHX](#20231115-ehx---lack-of-slippage-control)
+
 [20231115 XAI](#20231115-xai---business-logic-flaw)
 
 [20231115 LinkDAO](#20231115-linkdao---bad-k-value-verification)
@@ -66,17 +82,27 @@
 
 [20231110 GrokToken](#20231110-grok---lack-of-slippage-protection)
 
+[20231107 RBalancer](#20231107-rbalancer---business-logic-flaw)
+
 [20231107 MEVbot](#20231107-mevbot---lack-of-access-control)
 
 [20231106 TrustPad](#20231106-trustpad---lack-of-msgsender-address-verification)
 
+[20231106 KR](#20231106-KR---precision-loss)
+
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
+
+[20231102 BRAND](#20231102-brand---lack-of-access-control)
 
 [20231102 3913Token](#20231102-3913token---deflationary-token-attack)
 
 [20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
 
+[20231101 SwampFinance](#20231101-swampfinance---business-logic-flaw)
+
 [20231031 UniBotRouter](#20231031-UniBotRouter---arbitrary-external-call)
+
+[20231030 LaEeb](#20231030-laEeb---lack-slippage-protection)
 
 [20231028 AstridProtocol](#20231028-AstridProtocol---business-logic-flaw)
 
@@ -125,6 +151,8 @@
 [20230908 APIG](#20230908-apig---business-logic-flaw)
 
 [20230907 HCT](#20230907-hct---price-manipulation)
+
+[20230905 QuantumWN](#20230905-quantumwn---rebasing-logic-issue)
 
 [20230905 JumpFarm](#20230905-JumpFarm---rebasing-logic-issue)
 
@@ -186,6 +214,8 @@
 
 [20230717 NewFi](#20230717-newfi---lack-slippage-protection)
 
+[20230715 USDTStakingContract28](#20230715-usdtstakingcontract28---lack-of-access-control)
+
 [20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
 
 [20230712 WGPT](#20230712-wgpt---business-logic-flaw)
@@ -210,7 +240,13 @@
 
 [20230630 Biswap](#20230630-biswap---v3migrator-exploit)
 
+[20230630 MyAi](#20230630-MyAi---business-loigc)
+
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
+
+[20230627 STRAC](#20230627-STRAC---business-loigc)
+
+[20230627 UnverifiedContr_9ad32](#20230627-unverifiedcontr_9ad32---business-loigc)
 
 [20230623 SHIDO](#20230623-shido---business-loigc)
 
@@ -220,7 +256,11 @@
 
 [20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
 
+[20230619 Contract_0x7657](#20230620-Contract_0x7657---business-loigc)
+
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
+
+[20230617 MidasCapitalXYZ](#20230617-midascapitalxyz---precision-loss)
 
 [20230617 Pawnfi](#20230617-pawnfi---business-logic-flaw)
 
@@ -384,6 +424,22 @@
 
 [20230103 GDS](#20230103---gds---business-logic-flaw)
 
+### 20231231 Channels - Price Manipulation
+
+### Lost: ~$4.4K
+
+
+```sh
+forge test --contracts ./src/test/2023-12/Channels_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Channels_exp.sol](../../src/test/2023-12/Channels_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0xcf729a9392b0960cd315d7d49f53640f000ca6b8a0bd91866af5821fdf36afc5
+
+---
+
 ### 20231230 ChannelsFinance - CompoundV2 Inflation Attack
 
 ### Lost: ~320K
@@ -401,6 +457,43 @@ forge test --contracts src/test/2023-12/ChannelsFinance_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1741353303542501455
 
 ---
+
+### 20231228 CCV - Precision loss
+
+### Lost: ~3.2K $BUSD
+
+```
+forge test --contracts src/test/2023-12/CCV_exp.sol -vvv
+```
+
+#### Contract
+
+[CCV_exp.sol](../../src/test/2023-12/CCV_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x6ba4152db9da45f5751f2c083bf77d4b3385373d5660c51fe2e4382718afd9b4
+
+---
+
+### 20231228 DominoTT - Precision loss
+
+### Lost: ~5 $WBNB
+
+```
+forge test --contracts src/test/2023-12/DominoTT_exp.sol -vvv
+```
+
+#### Contract
+
+[DominoTT_exp.sol](../../src/test/2023-12/DominoTT_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x6ba4152db9da45f5751f2c083bf77d4b3385373d5660c51fe2e4382718afd9b4
+
+---
+
 
 ### 20231225 Telcoin - Storage Collision
 
@@ -428,7 +521,6 @@ https://hacked.slowmist.io/?c=&page=2
 
 ```
 forge test --contracts ./src/test/2023-12/PineProtocol_exp.sol -vvv
-
 ```
 
 #### Contract
@@ -449,7 +541,6 @@ https://twitter.com/MistTrack_io/status/1738131780459430338
 
 ```
 forge test --contracts ./src/test/2023-12/TransitFinance_exp.sol -vvv
-
 ```
 
 #### Contract
@@ -461,6 +552,24 @@ forge test --contracts ./src/test/2023-12/TransitFinance_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1737355152779030570
 
 https://explorer.phalcon.xyz/tx/bsc/0x93ae5f0a121d5e1aadae052c36bc5ecf2d406d35222f4c6a5d63fef1d6de1081
+
+---
+
+### 20231217 Bob - Price Manipulation
+
+### Lost: ~3BNB
+
+
+```sh
+forge test --contracts ./src/test/2023-12/Bob_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Bob_exp.sol](../../src/test/2023-12/Bob_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0xfb14292a531411f852993e5a3ba4e7eb63ed548220267b9b3f4aacc5572d3a58
+
+---
 
 ### 20231217 FloorProtocol - Business Logic Flaw
 
@@ -542,6 +651,24 @@ https://twitter.com/0xArhat/status/1736038250190651467
 
 ---
 
+### 20231214 PHIL - Business Logic Flaw
+
+### Lost: ~$2 $BNB
+
+```
+forge test --contracts ./src/test/2023-12/PHIL_exp.sol -vvv
+```
+
+#### Contract
+
+[PHIL_exp.sol](../../src/test/2023-12/PHIL_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x51dfa4311d6989c21b460590460a94f854446176fc184b8d1a16314fd043f737
+
+---
+
 ### 20231213 HYPR - Business Logic Flaw
 
 ### Lost: ~$200k
@@ -557,6 +684,56 @@ forge test --contracts ./src/test/2023-12/HYPR_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1735197818883588574
+
+---
+
+### 20231211 GoodCompound - Price Manipulation
+
+### Lost: ~$13K (~250 COMP Token)
+
+
+```sh
+forge test --contracts ./src/test/2023-12/GoodCompound_exp.sol -vvv
+```
+#### Contract
+[GoodCompound_exp.sol](../../src/test/2023-12/GoodCompound_exp.sol)
+### Link reference
+
+https://getherscan.io/tx/0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab
+
+---
+
+### 20231209 BCT - Price Manipulation
+
+### Lost: ~10.2BNB
+
+
+```sh
+forge test --contracts ./src/test/2023-12/BCT_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[BCT_exp.sol](../../src/test/2023-12/BCT_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0xdae0b85e01670e6b6b317657a72fb560fc388664cf8bfdd9e1b0ae88e0679103
+
+---
+
+### 20231207 HNet - Business logic flaw
+
+### Lost: ~2.4 $WBNB
+
+```
+forge test --contracts src/test/2023-12/HNet_exp.sol -vvv
+```
+
+#### Contract
+
+[HNet_exp.sol](../../src/test/2023-12/HNet_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x67af906c1efc05067a01f197bd780ebf4e0a76729d54288a400e715f87ea50c7
 
 ---
 
@@ -597,6 +774,22 @@ forge test --contracts ./src/test/2023-12/ElephantStatus_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1732354930529435940
+
+---
+
+### 20231205 MAMO - Price Manipulation
+
+### Lost: ~$3.3K
+
+
+```sh
+forge test --contracts ./src/test/2023-12/MAMO_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[MAMO_exp.sol](../../src/test/2023-12/MAMO_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0x189a8dc1e0fea34fd7f5fa78c6e9bdf099a8d575ff5c557fa30d90c6acd0b29f
 
 ---
 
@@ -657,6 +850,22 @@ forge test --contracts ./src/test/2023-12/UnverifiedContr_0x431abb_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1730625352953901123
+
+---
+
+### 20231130 EEE - Price Manipulation
+
+### Lost: ~$22.8K
+
+
+```sh
+forge test --contracts ./src/test/2023-11/EEE_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[EEE_exp.sol](../../src/test/2023-11/EEE_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0x7312d9f9c13fc69f00f58e92a112a3e7f036ced7e65f7e0fa67382488d5557dc
 
 ---
 
@@ -842,6 +1051,46 @@ forge test --contracts ./src/test/2023-11/ShibaToken_exp.sol -vvv
 
 ---
 
+### 20231116 WECO - Business Logic Flaw
+
+### Lost: ~$18K
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/WECO_exp.sol -vvv
+```
+
+#### Contract
+
+[WECO_exp.sol](../../src/test/2023-11/WECO_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1725311048625041887
+
+---
+
+### 20231115 EHX - Lack of Slippage Control
+
+### Lost: Unclear
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/EHX_exp.sol -vvv
+```
+
+#### Contract
+
+[EHX_exp.sol](../../src/test/2023-11/EHX_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1724691996638618086
+
+---
+
 ### 20231115 XAI - Business Logic Flaw
 
 ### Lost: Unclear
@@ -1002,6 +1251,26 @@ https://twitter.com/Phalcon_xyz/status/1722841076120130020
 
 ---
 
+### 20231107 RBalancer - Business Logic Flaw
+
+### Lost: ~17 ETH
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/RBalancer_exp.sol -vvv --evm-version "shanghai"
+```
+
+#### Contract
+
+[RBalancer_exp.sol](../../src/test/2023-11/RBalancer_exp.sol)
+
+#### Link Reference
+
+https://x.com/AnciliaInc/status/1722121056083943909
+
+---
+
 ### 20231107 MEVbot - Lack of access control
 
 ### Lost: ~$2M
@@ -1042,6 +1311,26 @@ https://twitter.com/BeosinAlert/status/1721800306101793188
 
 ---
 
+### 20231106 KR - Precision loss
+
+### Lost: ~$15K
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/KR_exp.sol  -vvv
+```
+
+#### Contract
+
+[KR_exp.sol](../../src/test/2023-11/KR_exp.sol)
+
+#### Link Reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x2abf871eb91d03bc8145bf2a415e79132a103ae9f2b5bbf18b8342ea9207ccd7
+
+---
+
 ### 20231106 TheStandard_io - Lack of slippage protection
 
 ### Lost: ~$290K
@@ -1061,6 +1350,26 @@ forge test --contracts ./src/test/2023-11/TheStandard_io_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1721807569222549518
 
 https://twitter.com/CertiKAlert/status/1721839125836321195
+
+---
+
+### 20231102 BRAND - Lack of access control
+
+### Lost: ~23 WBNB
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/BRAND_exp.sol  -vvv
+```
+
+#### Contract
+
+[BRAND_exp.sol](../../src/test/2023-11/BRAND_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1720035913009709473
 
 ---
 
@@ -1106,6 +1415,26 @@ https://twitter.com/DecurityHQ/status/1719657969925677161
 
 ---
 
+### 20231101 SwampFinance - Business Logic Flaw
+
+### Lost: Unclear
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/SwampFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[SwampFinance_exp.sol](../../src/test/2023-11/SwampFinance_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1720373044517208261
+
+---
+
 ### 20231031 UniBotRouter - Arbitrary External Call
 
 ### Lost: ~$83,944 USD$
@@ -1123,6 +1452,26 @@ forge test --contracts ./src/test/2023-10/UniBot_exp.sol --evm-version 'shanghai
 #### Link Reference
 
 https://twitter.com/PeckShieldAlert/status/1719251390319796477
+
+---
+
+### 20231030 LaEeb - Lack Slippage Protection
+
+### Lost: ~1.8 WBNB
+
+Test
+
+```
+forge test --contracts ./src/test/2023-10/LaEeb_exp.sol -vvv
+```
+
+#### Contract
+
+[LaEeb_exp.sol](../../src/test/2023-10/LaEeb_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1718964562165420076
 
 ---
 
@@ -1621,6 +1970,26 @@ forge test --contracts ./src/test/2023-09/HCT_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/leovctech/status/1699775506785198499
+
+---
+
+### 20230905 QuantumWN - Rebasing logic issue
+
+### Lost: ~$0.5 ETH
+
+Test
+
+```
+forge test --contracts ./src/test/2023-09/QuantumWN_exp.sol -vvv
+```
+
+#### Contract
+
+[QuantumWN_exp.sol](../../src/test/2023-09/QuantumWN_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1699384904218202618
 
 ---
 
@@ -2250,6 +2619,26 @@ https://twitter.com/Phalcon_xyz/status/1680961588323557376
 
 ---
 
+### 20230715 USDTStakingContract28 - Lack of access control
+
+### Lost: ~20999 USD
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-07/USDTStakingContract28_exp.sol -vvv
+```
+
+#### Contract
+
+[USDTStakingContract28_exp.sol](../../src/test/2023-07/USDTStakingContract28_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1680117291013267456
+
+---
+
 ### 20230712 Platypus - Bussiness Logic Flaw
 
 ### Lost: ~$51K
@@ -2508,6 +2897,26 @@ https://twitter.com/MetaTrustAlert/status/1674814217122349056?s=20
 
 ---
 
+### 20230630 MyAi - Business Loigc
+
+### Lost: ~2 $BNB
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/MyAi_exp.sol -vvv
+```
+
+#### Contract
+
+[MyAi_exp.sol](../../src/test/2023-06/MyAi_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1674781372182048776
+
+---
+
 ### 20230628 Themis - Manipulation of prices using Flashloan
 
 ### Lost: ~$370k
@@ -2527,6 +2936,46 @@ forge test --contracts ./src/test/2023-06/Themis_exp.sol -vvv
 https://twitter.com/BeosinAlert/status/1673930979348717570
 
 https://twitter.com/BlockSecTeam/status/1673897088617426946
+
+---
+
+### 20230627 UnverifiedContr_9ad32 - Business Loigc Flaw
+
+### Lost: ~5955 USD
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/UnverifiedContr_9ad32_exp.sol -vvv
+```
+
+#### Contract
+
+[UnverifiedContr_9ad32_exp.sol](../../src/test/2023-06/UnverifiedContr_9ad32_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1673708133926031360
+
+---
+
+### 20230627 STRAC - Business Loigc Flaw
+
+### Lost: ~12 $ETH
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/STRAC_exp.sol -vvv
+```
+
+#### Contract
+
+[STRAC_exp.sol](../../src/test/2023-06/STRAC_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1673769624611987487
 
 ---
 
@@ -2612,6 +3061,26 @@ https://twitter.com/hexagate_/status/1671188024607100928?cxt=HHwWgMC--e2poLEuAAA
 
 ---
 
+### 20230619 Contract_0x7657 - Business Loigc
+
+### Lost: ~$20k $USDT
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/Contract_0x7657_exp.sol -vvv
+```
+
+#### Contract
+
+[Contract_0x7657_exp.sol](../../src/test/2023-06/Contract_0x7657_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1670806260550184962
+
+---
+
 ### 20230618 ARA - Incorrect handling of permissions
 
 ### Lost: ~$125k
@@ -2649,6 +3118,26 @@ forge test --contracts ./src/test/2023-06/Pawnfi_exp.sol -vvv
 #### Link Reference
 
 https://blog.solidityscan.com/pawnfi-hack-analysis-38ac9160cbb4
+
+---
+
+### 20230617 MidasCapitalXYZ - Precision Loss
+
+### Lost: ~$600K
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/MidasCapitalXYZ_exp.sol -vvv
+```
+
+#### Contract
+
+[MidasCapitalXYZ_exp.sol](../../src/test/2023-06/MidasCapitalXYZ_exp.sol)
+
+#### Link Reference
+
+https://medium.com/midas-capital/midas-exploit-post-mortem-1ae266222994
 
 ---
 

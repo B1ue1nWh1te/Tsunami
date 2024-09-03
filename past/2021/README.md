@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-43 incidents included.
+49 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -11,6 +11,8 @@
 [20211214 Nerve Bridge](#20211214-nerve-bridge---swap-metapool-attack)
 
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
+
+[20211123 Ploutoz Finance](#20211123-ploutoz---flash-loan)
 
 [20211027 Cream Finance](#20211027-creamfinance---price-manipulation)
 
@@ -50,9 +52,13 @@
 
 [20210603 PancakeHunny](#20210603-pancakehunny---incorrect-calculation)
 
+[20210527 JulSwap](#20210527-julswap---flash-loan)
+
 [20210527 BurgerSwap](#20210527-burgerswap---mathematical-flaw--reentrancy)
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
+
+[20210516 bEarn](#20210516-bearn---logic-flaw)
 
 [20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
 
@@ -76,6 +82,8 @@
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
 
+[20200912 bzx](#20200912-bzx---incorrect-transfer)
+
 [20200804 Opyn Protocol](#20200804-opyn-protocol---msgValue-in-loop)
 
 [20200628 Balancer Protocol](#20200628-balancer-protocol---token-incompatible)
@@ -85,6 +93,10 @@
 [20200419 LendfMe](#20200419-lendfme---erc777-reentrancy)
 
 [20200418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
+
+[20181007 SpankChain](#20181007-spankchain---reentrancy)
+
+[20180424 SmartMesh](#20180424-smartmesh---overflow)
 
 [20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
@@ -183,6 +195,25 @@ https://www.tuoniaox.com/news/p-521076.html
 https://polygonscan.com/tx/0x5a03b9c03eedcb9ec6e70c6841eaa4976a732d050a6218969e39483bb3004d5d
 
 https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299
+
+---
+
+### 20211123 Ploutoz - Flash Loan
+
+#### Lost: 365K
+
+Testing
+```sh
+forge test --contracts ./src/test/2021-11/Ploutoz_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[Ploutoz_exp.sol](../../src/test/2021-11/Ploutoz_exp.sol)
+
+### Link reference
+
+https://x.com/peckshield/status/1463113809111896065
 
 ---
 
@@ -592,6 +623,24 @@ https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3
 
 ---
 
+### 20210527 JulSwap - Flash Loan
+
+### Lost: 1.5M
+
+```sh
+forge test --contracts ./src/test/2021-05/JulSwap_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[JulSwap_exp.sol](../../src/test/2021-05/JulSwap_exp.sol)
+
+### Link reference
+
+https://x.com/tg_cryptos/status/1398090345368408064
+
+---
+
 ### 20210527 BurgerSwap - Mathematical flaw + Reentrancy
 
 Testing
@@ -627,6 +676,24 @@ forge test --contracts ./src/test/2021-05/PancakeBunny_exp.sol -vv
 https://rekt.news/pancakebunny-rekt/
 
 https://bscscan.com/tx/0x897c2de73dd55d7701e1b69ffb3a17b0f4801ced88b0c75fe1551c5fcce6a979
+
+---
+
+### 20210516 bEarn - Logic Flaw
+
+### Lost: 11M
+
+```sh
+forge test --contracts ./src/test/2021-05/bEarn_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[bEarn_exp.sol](../../src/test/2021-05/bEarn_exp.sol)
+
+### Link reference
+
+https://bearndao.medium.com/bvaults-busd-alpaca-strategy-exploit-post-mortem-and-bearn-s-compensation-plan-b0b38c3b5540
 
 ---
 
@@ -709,6 +776,40 @@ forge test --contracts ./src/test/2021-04/Uranium_exp.sol -vv
 https://twitter.com/FrankResearcher/status/1387347025742557186
 
 https://bscscan.com/tx/0x5a504fe72ef7fc76dfeb4d979e533af4e23fe37e90b5516186d5787893c37991
+
+---
+
+### 20200912 bzx - Incorrect transfer
+
+### Lost: 
+
+```sh
+forge test --contracts ./src/test/2020-09/bzx_exp.sol -vvv
+```
+#### Contract
+
+[bzx_exp.sol](../../src/test/2020-09/bzx_exp.sol)
+
+### Link reference
+
+https://twitter.com/0x000000000marc/status/1305354469354303488
+
+---
+
+### 20180424 SmartMesh - Overflow
+
+### Lost: 140M
+
+```sh
+forge test --contracts ./src/test/2018-04/SmartMesh_exp.sol -vvv
+```
+#### Contract
+
+[SmartMesh_exp.sol](../../src/test/2018-04/SmartMesh_exp.sol)
+
+### Link reference
+
+https://cryptojobslist.com/blog/two-vulnerable-erc20-contracts-deep-dive-beautychain-smartmesh
 
 ---
 
@@ -960,6 +1061,22 @@ forge test --contracts ./src/test/2020-04/uniswap-erc777.sol -vv
 #### Link reference
 
 https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-risk-8fa5b3738e08
+
+---
+
+### 20181007 SpankChain - Reentrancy
+
+### Lost: 155 $ETH
+
+
+```sh
+forge test --contracts ./src/test/2018-10/SpankChain_exp.sol -vvv
+```
+#### Contract
+[SpankChain_exp.sol](src/test/2018-10/SpankChain_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/eth/0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88
 
 ---
 
