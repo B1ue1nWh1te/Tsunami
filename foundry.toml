@@ -4,9 +4,10 @@ out = 'out'
 libs = ['lib']
 
 [rpc_endpoints]
-mainnet = "https://rpc.ankr.com/eth"
+eth = "https://rpc.ankr.com/eth"
 bsc = "https://rpc.ankr.com/bsc"
 base = "https://rpc.ankr.com/base"
+polygon = "https://rpc.ankr.com/polygon"
 
 [fmt]
 line_length = 120
