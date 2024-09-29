@@ -9,17 +9,24 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout This Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout Upstream Repository
         uses: actions/checkout@v4
         with:
           repository: SunWeb3Sec/DeFiHackLabs
           token: ${{ secrets.GITHUB_TOKEN }}
           path: upstream
 
-      - name: Merge Changes
+      - name: Configure Git
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git checkout main
+
+      - name: Merge Changes
+        run: |
           git pull upstream main
           git push origin main
