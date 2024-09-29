@@ -1,0 +1,25 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          repository: SunWeb3Sec/DeFiHackLabs
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: upstream
+
+      - name: Merge Changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git checkout main
+          git pull upstream main
+          git push origin main
