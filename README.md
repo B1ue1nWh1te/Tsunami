@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-529 incidents included.
+537 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,20 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20241013 MorphoBlue](#20241013-morphoblue---overpriced-asset-in-oracle)
+
+[20241011 P719Token](#20241011-p719token---price-manipulation-inflate-attack)
+
+[20241006 HYDT](#20241010-hydt---oracle-price-manipulation)
+
+[20241006 SASHAToken](#20241006-sashatoken---price-manipulation)
+
+[20241005 AIZPTToken](#20241005-AIZPTToken---wrong-price-calculation)
+
+[20241002 LavaLending](#20241002-LavaLending---price-manipulation)
+
+[20241001 FireToken](#20241001-firetoken---pair-manipulation-with-transfer-function)
+
 [20240926 OnyxDAO](#20240926-OnyxDAO---fake-market)
 
 [20240926 Bedrock_DeFi](#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
@@ -59,12 +73,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240913 OTSeaStaking](#20240913-OTSeaStaking---Logic-Flaw)
 
-
 [20240910 Caterpillar_Coin_CUT](#20240910-Caterpillar_Coin_CUT---price-manipulation)
 
 [20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
 [20240816 Zenterest](#20240816-Zenterest---price-out-of-date)
+
+[20240816 OMPxContract](#20240816-ompx-contract---flashloan)
 
 [20240828 AAVE](#20240828-aave---arbitrary-call-error)
 
@@ -188,7 +203,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240415 GFA](#20240415-gfa---business-logic-flaw)
 
-[20240415 Chainge](#20240415-chainge---input-validation)
+[20240415 ChaingeFinance](#20240415-chaingeFinance---arbitrary-external-call)
 
 [20240414 Hackathon](#20240414-hackathon---business-logic-flaw)
 
@@ -1144,12 +1159,143 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+
+
+
+### 20241013 MorphoBlue - Overpriced Asset in Oracle
+
+### Lost: $230,000
+
+
+```sh
+forge test --contracts ./src/test/2024-10/MorphoBlue_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[MorphoBlue_exp.sol](src/test/2024-10/MorphoBlue_exp.sol)
+### Link reference
+
+https://x.com/omeragoldberg/status/1845515843787960661
+
+---
+
+### 20241011 P719Token - Price Manipulation Inflate Attack
+
+### Total Lost : 547.18 BNB (~$312K USD)
+
+```
+forge test --match-contract P719Token_exp -vvv
+```
+
+#### Contract
+
+[P719Token_exp.sol](src/test/2024-10/P719Token_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1844753750386426182
+
+---
+
+### 20241006 SASHAToken - Price Manipulation
+
+### Total Lost : 249 ETH (~$600K USD)
+
+```
+forge test --match-contract SASHAToken_exp -vvv
+```
+
+#### Contract
+
+[SASHAToken_exp.sol](src/test/2024-10/SASHAToken_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1842864840265883833
+
+---
+
+
+### 20241010 HYDT - Oracle Price Manipulation
+
+### Total Lost : 5.8k USDT
+
+```
+forge test --contracts ./src/test/2024-10/HYDT_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+
+[HYDT_exp.sol](src/test/2024-10/HYDT_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1844241843518951451
+
+---
+
+### 20241005 AIZPTToken - Wrong Price Calculation
+
+### Total Lost : 34.88 BNB (~$20K USD)
+
+```sh
+forge test --match-contract AIZPTToken_exp -vvv
+```
+
+#### Contract
+
+[AIZPTToken_exp.sol](src/test/2024-10/AIZPTToken_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1842576732047700077
+
+---
+
+### 20241001 FireToken - Pair Manipulation With Transfer Function
+
+### Lost: 8.45 ETH (~$20K USD)
+
+```sh
+forge test --contracts ./src/test/2024-10/FireToken_exp.sol -vvv
+```
+
+#### Contract
+
+[FireToken_exp.sol](src/test/2024-10/FireToken_exp.sol)
+
+### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1841305965750350089
+
+---
+
+### 20241002 LavaLending - Price Manipulation
+
+### Lost: 1 USDC, 125795.6 cUSDC, 0,0067 WBTC, 2.25 WETH (~$130K USD)
+
+```sh
+forge test --match-contract LavaLending_exp -vvv
+```
+
+#### Contract
+
+[LavaLending_exp.sol](src/test/2024-10/LavaLending_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1841823216425435308
+
+
+https://nickfranklin.site/2024/10/03/unknown-lending-project-hacked-due-to-price-oracle-manipulation/
+
+---
+
 ### 20240926 OnyxDAO - Fake Market
 
 ### Lost: 4.1M VUSD, 7.35M XCN, 5K DAI, 0.23 WBTC, 50K USDT (>$3.8M USD)
 
 ```sh
-forge test --contracts ./src/test/2024-09/OnyxDAO_exp.sol -vvv
+forge test --match-contract OnyxDAO_exp -vvv
 ```
 
 #### Contract
@@ -1167,7 +1313,7 @@ https://x.com/peckshield/status/1839302663680438342
 ### Lost: 27.83925883 BTC (~$1.7M USD)
 
 ```sh
-forge test --contracts ./src/test/2024-09/Bedrock_DeFi_exp.sol -vvv
+forge test --match-contract Bedrock_DeFi_exp -vvv
 ```
 
 #### Contract
@@ -1185,7 +1331,7 @@ https://x.com/certikalert/status/1839403126694326374
 ### Lost: ~8.8 WBNB (~5.3K USD)
 
 ```sh
-forge test --contracts ./src/test/2024-09/MARA_exp.sol -vvv
+forge test --match-contract MARA_exp -vvv
 
 ```
 
@@ -1202,7 +1348,7 @@ https://bscscan.com/tx/0x0fe3716431f8c2e43217c3ca6d25eed87e14d0fbfa9c9ee8ce4cef2
 ### Lost: ~404 WBNB (~234.8K USD)
 
 ```sh
-forge test --contracts ./src/test/2024-09/Bankroll_exp.sol -vvv
+forge test --match-contract Bankroll_exp -vvv
 ```
 
 #### Contract
@@ -1220,7 +1366,7 @@ https://x.com/Phalcon_xyz/status/1838042368018137547
 ### Lost: 26k
 
 ```sh
-forge test --contracts ./src/test/2024-09/OTSeaStaking_exp.sol -vvv
+forge test --match-contract OTSeaStaking_exp -vvv
 ```
 #### Contract
 
@@ -1238,7 +1384,7 @@ Nick Franklin: https://nickfranklin.site/2024/09/13/otsea-staking-hacked/
 ### Lost: ~1.4M USD
 
 ```sh
-forge test --contracts ./src/test/2024-09/Caterpillar_Coin_CUT_exp.sol -vvv --evm-version shanghai
+forge test --match-contract Caterpillar_Coin_CUT_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -1257,7 +1403,7 @@ https://www.certik.com/zh-CN/resources/blog/caterpillar-coin-cut-token-incident-
 ### Lost: 11,113.6 ETH (~$27,348,259 USD)
 
 ```sh
-forge test --contracts ./src/test/2024-09/Penpiexyzio_exp.sol -vvv --evm-version shanghai
+forge test --match-contract Penpiexyzio_exp -vvv --evm-version shanghai
 ```
 #### Contract
 
@@ -1279,11 +1425,12 @@ post-morten: https://x.com/Penpiexyz_io/status/1831462760787452240
 
 ### Lost: 52000
 
-
 ```sh
-forge test --contracts ./src/test/2024-08/AAVE_Repay_Adapter.sol -vvv
+forge test --match-contract AAVE_Repay_Adapter -vvv
 ```
+
 #### Contract
+
 [AAVE_Repay_Adapter.sol](src/test/2024-08/AAVE_Repay_Adapter.sol)
 
 ### Link reference
@@ -1295,7 +1442,7 @@ https://www.vibraniumaudits.com/post/aave-hacked-via-periphery-contract-56kstole
 ### Lost: ~21000 USD
 
 ```sh
-forge test --contracts ./src/test/2024-08/Zenterest_exp.sol -vvvv --evm-version shanghai
+forge test --match-contract Zenterest_exp -vvvv --evm-version shanghai
 ```
 #### Contract
 
@@ -1307,13 +1454,30 @@ https://x.com/0xNickLFranklin/status/1824579761383018564
 
 ---
 
+### 20240816 OMPx Contract - FlashLoan
+
+### Lost: 4.37 ETH (~11527 USD)
+
+```sh
+forge test --match-contract OMPxContract_exp -vvv
+```
+#### Contract
+
+[OMPxContract_exp.sol](src/test/2024-08/OMPxContract_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1820816386551357448
+
+---
+
 ### 20240814 NoName - Arbitrary Call
 
 ### Lost: ~5k
 
 
 ```sh
-forge test --contracts ./src/test/2024-08/YodlRouter_exp.sol -vvv
+forge test --match-contract YodlRouter_exp -vvv
 ```
 #### Contract
 [YodlRouter_exp.sol](src/test/2024-08/YodlRouter_exp.sol)
@@ -1329,7 +1493,7 @@ https://x.com/0xNickLFranklin/status/1823601087011807636
 
 
 ```sh
-forge test --contracts ./src/test/2024-08/VOW_exp.sol -vvv
+forge test --match-contract VOW_exp -vvv
 ```
 #### Contract
 [VOW_exp.sol](src/test/2024-08/VOW_exp.sol)
@@ -1344,7 +1508,7 @@ https://x.com/Vowcurrency/status/1823407231658025300
 ### Lost: ~338 WBNB
 
 ```sh
-forge test --contracts src/test/2024-08/IvestDao_exp.sol -vvv
+forge test --match-contract IvestDao_exp -vvv
 ```
 
 #### Contract
@@ -1363,7 +1527,7 @@ https://x.com/AnciliaInc/status/1822870201698050064
 ### Lost: ~25K USD
 
 ```sh
-forge test --contracts ./src/test/2024-08/NovaXM2E_exp.sol -vvv
+forge test --match-contract NovaXM2E_exp -vvv
 ```
 
 #### Contract
@@ -1381,7 +1545,7 @@ https://x.com/EXVULSEC/status/1820676684410147276
 ### Lost: ~200K USD
 
 ```sh
-forge test --contracts ./src/test/2024-08/Convergence_exp.sol -vvvv --evm-version cancun
+forge test --match-contract Convergence_exp -vvvv --evm-version cancun
 ```
 
 #### Contract
@@ -1399,7 +1563,7 @@ https://x.com/DecurityHQ/status/1819030089012527510
 ### Lost: ~73K USD
 
 ```sh
-forge test --contracts ./src/test/2024-07/Spectra_finance_exp.sol -vvv
+forge test --match-contract Spectra_finance_exp -vvv
 ```
 
 #### Contract
@@ -1417,7 +1581,7 @@ https://x.com/shoucccc/status/1815981585637990899
 ### Lost: ~18k USD
 
 ```sh
-forge test --contracts src/test/MEVbot_0xdd7c_exp.sol -vvv --evm-version cancun
+forge test --match-contract -vvv --evm-version cancun
 ```
 
 #### Contract
@@ -1435,7 +1599,7 @@ https://x.com/SlowMist_Team/status/1815656653100077532
 ### Lost: ~10M USD
 
 ```sh
-forge test --contracts ./src/test/2024-07/Lifiprotocol_exp.sol -vvv
+forge test --match-contract Lifiprotocol_exp -vvv
 ```
 
 #### Contract
@@ -1453,7 +1617,7 @@ https://x.com/danielvf/status/1505689981385334784
 ### Lost: ~427 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-07/Minterest_exp.sol -vvv
+forge test --match-contract Minterest_exp -vvv
 ```
 
 #### Contract
@@ -1471,7 +1635,7 @@ https://x.com/0xNickLFranklin/status/1813122959219040323
 ### Lost: ~1.8M USD
 
 ```sh
-forge test --contracts ./src/test/2024-07/DoughFina_exp.sol -vvv
+forge test --match-contract DoughFina_exp -vvv
 ```
 
 #### Contract
@@ -1489,7 +1653,7 @@ https://x.com/CertiKAlert/status/1811668992882307478
 ### Lost: ~56K USD
 
 ```sh
-forge test --contracts ./src/test/2024-07/SBT_exp.sol -vvv
+forge test --match-contract SBT_exp -vvv
 ```
 
 #### Contract
@@ -1507,7 +1671,7 @@ https://x.com/0xNickLFranklin/status/1811401263969673654
 ### Lost: ~50K $BUSD
 
 ```sh
-forge test --contracts ./src/test/2024-07/GAX_exp.sol -vvv
+forge test --match-contract GAX_exp -vvv
 ```
 
 #### Contract
@@ -1525,7 +1689,7 @@ https://x.com/EXVULSEC/status/1811348160851378333
 ### Lost: ~7K USD
 
 ```sh
-forge test --contracts ./src/test/2024-07/LW_exp.sol -vvv
+forge test --match-contract LW_exp -vvv
 ```
 
 #### Contract
@@ -1543,7 +1707,7 @@ https://x.com/0xNickLFranklin/status/1810245893490368820
 ### Lost: ~200K USD
 
 ```sh
-forge test --contracts ./src/test/2024-07/DeFiPlaza_exp.sol -vvv
+forge test --match-contract DeFiPlaza_exp -vvv
 ```
 
 #### Contract
@@ -1561,7 +1725,7 @@ https://x.com/DecurityHQ/status/1809222922998808760
 ### Lost: 27 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-07/UnverifiedContr_0x452E25_exp.sol -vvv --evm-version "cancun"
+forge test --match-contract UnverifiedContr_0x452E25_exp -vvv --evm-version "cancun"
 ```
 
 #### Contract
@@ -1579,7 +1743,7 @@ https://x.com/SlowMist_Team/status/1808334870650970514
 ### Lost: 17 BNB
 
 ```sh
-forge test --contracts ./src/test/2024-07/MRP_exp.sol -vvv
+forge test --match-contract MRP_exp -vvv
 ```
 
 #### Contract
@@ -1597,7 +1761,7 @@ https://x.com/0xNickLFranklin/status/1808309614443733005
 ### Lost: $52K
 
 ```sh
-forge test --contracts ./src/test/2024-06/Will_exp.sol -vvv --evm-version "shanghai"
+forge test --match-contract Will_exp -vvv --evm-version "shanghai"
 ```
 
 #### Contract
@@ -1615,7 +1779,7 @@ https://x.com/0xNickLFranklin/status/1806704287252394238
 ### Lost: ~9 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-06/APEMAGA_exp.sol -vvv --evm-version "shanghai"
+forge test --match-contract APEMAGA_exp -vvv --evm-version "shanghai"
 ```
 
 #### Contract
@@ -1633,7 +1797,7 @@ https://x.com/ChainAegis/status/1806297556852601282
 ### Lost: ~59K USD
 
 ```sh
-forge test --contracts ./src/test/2024-06/INcufi_exp.sol  -vvv
+forge test --match-contract INcufi_exp -vvv
 ```
 
 #### Contract
@@ -1651,7 +1815,7 @@ https://x.com/0xNickLFranklin/status/1803317022513832301
 ### Lost: 52 BNB
 
 ```sh
-forge test --contracts ./src/test/2024-06/Dyson_money_exp.sol  -vvv
+forge test --match-contract Dyson_money_exp -vvv
 ```
 
 #### Contract
@@ -1669,7 +1833,7 @@ https://x.com/0xNickLFranklin/status/1802634237667054052
 ### Lost: ~3.4 ETH (WIF token)
 
 ```sh
-forge test --contracts ./src/test/2024-06/WIFCOIN_ETH_exp.sol  -vv --evm-version "shanghai"
+forge test --match-contract WIFCOIN_ETH_exp -vvv --evm-version "shanghai"
 ```
 
 #### Contract
@@ -1687,7 +1851,7 @@ https://x.com/ChainAegis/status/1802550962977964139
 ### Lost: ~15K
 
 ```sh
-forge test --contracts ./src/test/2024-06/Crb2_exp.sol  -vv --evm-version shanghai
+forge test --match-contract Crb2_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -1703,7 +1867,7 @@ forge test --contracts ./src/test/2024-06/Crb2_exp.sol  -vv --evm-version shangh
 ### Lost: ~9.2 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-06/JokInTheBox_exp.sol  -vv --evm-version cancun
+forge test --match-contract JokInTheBox_exp -vvv --evm-version cancun
 ```
 
 #### Contract
@@ -1721,7 +1885,7 @@ https://x.com/0xNickLFranklin/status/1800355604692910571
 ### Lost: 1.4M
 
 ```sh
-forge test --contracts ./src/test/2024-06/Bazaar_exp.sol -vvv
+forge test --match-contract Bazaar_exp -vvv
 ```
 
 #### Contract
@@ -1739,7 +1903,7 @@ https://x.com/shoucccc/status/1800353122159833195
 ### Lost: $28K
 
 ```sh
-forge test --contracts  src/test/2024-06/YYS_exp.sol -vv
+forge test --match-contract YYS_exp -vv
 ```
 
 #### Contract
@@ -1757,7 +1921,7 @@ https://x.com/0xNickLFranklin/status/1799610045589831833
 ### Lost: ~$91k
 
 ```sh
-forge test --contracts ./src/test/2024-06/SteamSwap_exp.sol -vvv --evm-version shanghai
+forge test --match-contract SteamSwap_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -1775,7 +1939,7 @@ https://x.com/SlowMist_Team/status/1798905797440897386
 ### Lost: $13.8K
 
 ```sh
-forge test --contracts  src/test/2024-06/MineSTM_exp.sol -vv
+forge test --match-contract MineSTM_exp -vv
 ```
 
 #### Contract
@@ -1793,7 +1957,7 @@ https://x.com/0xNickLFranklin/status/1798920774511898862
 ### Lost: $6.4K
 
 ```sh
-forge test --contracts  src/test/2024-06/NCD_exp.sol -vv
+forge test --match-contract NCD_exp -vv
 ```
 
 #### Contract
@@ -1811,7 +1975,7 @@ https://x.com/SlowMist_Team/status/1797821034319765604
 ### Lost: $6.88M
 
 ```sh
-forge test --contracts  src/test/2024-06/Velocore_exp.sol -vv
+forge test --match-contract Velocore_exp -vv
 ```
 
 #### Contract
@@ -1829,7 +1993,7 @@ https://x.com/BeosinAlert/status/1797247874528645333
 ### Lost: ~200K USD
 
 ```sh
-forge test --contracts ./src/test/2024-05/Liquiditytokens_exp.sol -vvv
+forge test --match-contract Liquiditytokens_exp -vvv
 ```
 
 #### Contract
@@ -1847,7 +2011,7 @@ https://x.com/EXVULSEC/status/1796499069583724638
 ### Lost: >10700USD(WINR token)
 
 ```sh
-forge test --contracts ./src/test/2024-05/MixedSwapRouter_exp.sol -vvv
+forge test --match-contract MixedSwapRouter_exp -vvv
 ```
 
 #### Contract
@@ -1865,7 +2029,7 @@ https://x.com/ChainAegis/status/1796484286738227579
 ### Lost: 76 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-05/SCROLL_exp.sol -vvv
+forge test --match-contract SCROLL_exp -vvv
 ```
 
 #### Contract
@@ -1883,7 +2047,7 @@ https://x.com/0xNickLFranklin/status/1795650745448169741
 ### Lost: ~ $180k
 
 ```sh
-forge test --contracts src/test/2024-05/MetaDragon_exp.sol -vvvvv  --evm-version shanghai
+forge test --match-contract MetaDragon_exp -vvvvv --evm-version shanghai
 ```
 
 #### Contract
@@ -1901,7 +2065,7 @@ https://x.com/Phalcon_xyz/status/1795746828064854497
 ### Lost: ~645K
 
 ```sh
-forge test --contracts ./src/test/2024-05/Tradeonorion_exp.sol -vvv
+forge test --match-contract Tradeonorion_exp -vvv
 ```
 
 #### Contract
@@ -1919,7 +2083,7 @@ https://x.com/MetaSec_xyz/status/1796008961302258001
 ### Lost: 33BNB
 
 ```sh
-forge test --contracts ./src/test/2024-05/EXcommunity_exp.sol -vvv
+forge test --match-contract EXcommunity_exp -vvv
 ```
 
 #### Contract
@@ -1937,7 +2101,7 @@ https://x.com/SlowMist_Team/status/1795648617530995130
 ### Lost: $12K
 
 ```sh
-forge test --contracts ./src/test/2024-05/RedKeysCoin_exp.sol -vvv --evm-version shanghai
+forge test --match-contract RedKeysCoin_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -1953,7 +2117,7 @@ forge test --contracts ./src/test/2024-05/RedKeysCoin_exp.sol -vvv --evm-version
 ### Lost: $490K
 
 ```sh
-forge test --contracts ./src/test/2024-05/NORMIE_exp.sol -vv
+forge test --match-contract NORMIE_exp -vv
 ```
 
 #### Contract
@@ -1971,7 +2135,7 @@ https://x.com/lookonchain/status/1794680612399542672
 ### Lost: 1.7 eth
 
 ```sh
-forge test --contracts ./src/test/2024-05/Burner_exp.sol -vv
+forge test --match-contract Burner_exp -vv
 ```
 
 #### Contract
@@ -1989,7 +2153,7 @@ https://x.com/0xNickLFranklin/status/1792925754243625311
 ### Lost: $18K
 
 ```sh
-forge test --contracts ./src/test/2024-05/TCH_exp.sol -vvv
+forge test --match-contract TCH_exp -vvv
 ```
 
 #### Contract
@@ -2007,7 +2171,7 @@ https://x.com/DecurityHQ/status/1791180322882629713
 ### Lost: $20M
 
 ```sh
-forge test --contracts ./src/test/2024-05/Sonne_exp.sol -vvv
+forge test --match-contract Sonne_exp -vvv
 ```
 
 #### Contract
@@ -2025,7 +2189,7 @@ https://neptunemutual.com/blog/taking-a-closer-look-at-sonne-finance-exploit/
 ### Lost: $464K
 
 ```sh
-forge test --contracts ./src/test/2024-05/PredyFinance_exp.sol -vvv
+forge test --match-contract PredyFinance_exp -vvv
 ```
 
 #### Contract
@@ -2043,7 +2207,7 @@ https://twitter.com/Phalcon_xyz/status/1790307019590680851
 ### Lost: $32K
 
 ```sh
-forge test --contracts ./src/test/2024-05/TGC_exp.sol -vvv
+forge test --match-contract TGC_exp -vvv
 ```
 
 #### Contract
@@ -2061,7 +2225,7 @@ https://x.com/ChainAegis/status/1789490986588205529
 ### Lost: 330K USD
 
 ```sh
-forge test --contracts ./src/test/2024-05/GFOX_exp.sol -vvv --evm-version shanghai
+forge test --match-contract GFOX_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2079,7 +2243,7 @@ https://twitter.com/CertiKAlert/status/1788751142144401886
 ### Lost: 140K
 
 ```sh
-forge test --contracts ./src/test/2024-05/TSURU_exp.sol -vvv --evm-version shanghai
+forge test --match-contract TSURU_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2097,7 +2261,7 @@ https://base.tsuru.wtf/usdtsuru-exploit-incident-report
 ### Lost: ~32K USD
 
 ```sh
-forge test --contracts src/test/2024-05/GPU_exp.sol -vvv
+forge test --match-contract GPU_exp -vvv
 ```
 
 #### Contract
@@ -2115,7 +2279,7 @@ https://twitter.com/PeckShieldAlert/status/1788153869987611113
 ### Lost: ~15 BNB
 
 ```sh
-forge test --contracts src/test/2024-05/OSN_exp.sol -vvv
+forge test --match-contract OSN_exp -vvv
 ```
 
 #### Contract
@@ -2133,7 +2297,7 @@ https://twitter.com/ChainAegis/status/1787667253435195841
 ### Lost: ~109K USD
 
 ```sh
-forge test --contracts src/test/2024-05/OSN_exp.sol -vvv --evm-version shanghai
+forge test --match-contract OSN_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2151,7 +2315,7 @@ https://twitter.com/SlowMist_Team/status/1787330586857861564
 ### Lost: 181K
 
 ```sh
-forge test --contracts ./src/test/2024-04/Yield_exp.sol -vvv
+forge test --match-contract Yield_exp -vvv
 ```
 
 #### Contract
@@ -2171,7 +2335,7 @@ https://medium.com/immunefi/yield-protocol-logic-error-bugfix-review-7b86741e6f5
 ### Lost: 1.4M
 
 ```sh
-forge test --contracts ./src/test/2024-04/PikeFinance_exp.sol -vvv
+forge test --match-contract PikeFinance_exp -vvv
 ```
 
 #### Contract
@@ -2189,7 +2353,7 @@ https://twitter.com/Phalcon_xyz/status/1785508900093194591
 ### Lost: ~75 $BNB
 
 ```sh
-forge test --contracts ./src/test/2024-04/BNBX_exp.sol -vvv --evm-version shanghai
+forge test --match-contract BNBX_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2207,7 +2371,7 @@ https://x.com/ChainAegis/status/1784431544557514896
 ### Lost: ~190K
 
 ```sh
-forge test --contracts ./src/test/2024-04/NGFS_exp.sol -vvv --evm-version shanghai
+forge test --match-contract NGFS_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2225,7 +2389,7 @@ https://twitter.com/CertiKAlert/status/1783476515331616847
 ### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
 
 ```sh
-forge test --contracts ./src/test/2024-04/XBridge_exp.sol -vvv
+forge test --match-contract XBridge_exp -vvv
 ```
 
 #### Contract
@@ -2239,7 +2403,7 @@ forge test --contracts ./src/test/2024-04/XBridge_exp.sol -vvv
 ### Lost: 150k USD
 
 ```sh
-forge test --contracts ./src/test/2024-04/YIEDL_exp.sol -vvv
+forge test --match-contract YIEDL_exp -vvv
 ```
 
 #### Contract
@@ -2251,7 +2415,7 @@ forge test --contracts ./src/test/2024-04/YIEDL_exp.sol -vvv
 ### Lost: 136k USD
 
 ```sh
-forge test --contracts ./src/test/2024-04/Z123_exp.sol -vvv
+forge test --match-contract Z123_exp -vvv
 ```
 
 #### Contract
@@ -2269,7 +2433,7 @@ https://twitter.com/PeckShieldAlert/status/1782322484911784385
 ### Lost: 36K
 
 ```sh
-forge test --contracts ./src/test/2024-04/Rico_exp.sol -vvv
+forge test --match-contract Rico_exp -vvv
 ```
 
 #### Contract
@@ -2287,7 +2451,7 @@ https://twitter.com/ricocreditsys/status/1781803698940781009
 ### Lost: 48M USD
 
 ```sh
-forge test --contracts ./src/test/2024-04/HedgeyFinance_exp.sol -vvv
+forge test --match-contract HedgeyFinance_exp -vvv
 ```
 
 #### Contract
@@ -2305,7 +2469,7 @@ https://twitter.com/Cube3AI/status/1781294512716820918
 ### Lost: ~ 18 eth
 
 ```sh
-forge test --contracts src/test/2024-04/UnverifiedContr_0x00C409_exp.sol -vvv
+forge test --match-contract UnverifiedContr_0x00C409_exp -vvv
 ```
 
 #### Contract
@@ -2323,7 +2487,7 @@ https://x.com/CyversAlerts/status/1780593407871635538
 ### Lost: ~ 50 BNB
 
 ```sh
-forge test --contracts src/test/2024-04/SATX_exp.sol -vvv
+forge test --match-contract SATX_exp -vvv
 ```
 
 #### Contract
@@ -2341,7 +2505,7 @@ https://x.com/bbbb/status/1780341239801393479
 ### Lost: >100K
 
 ```sh
-forge test --contracts src/test/2024-04/MARS_exp.sol -vv
+forge test --match-contract MARS_exp -vv
 ```
 
 #### Contract
@@ -2359,7 +2523,7 @@ https://twitter.com/Phalcon_xyz/status/1780150315603701933
 ### Lost: ~14K USD
 
 ```sh
-forge test --contracts src/test/2024-04/GFA_exp.sol -vvv
+forge test --match-contract GFA_exp -vvv
 ```
 
 #### Contract
@@ -2372,17 +2536,17 @@ https://x.com/ChainAegis/status/1779809931962827055
 
 ---
 
-### 20240415 Chainge - Input Validation
+### 20240415 ChaingeFinance - Arbitrary External Call 
 
-### Lost: ~200K
+### Lost: ~560K
 
 ```sh
-forge test --contracts ./src/test/2024-04/Chainge_exp.sol -vvv
+forge test --match-contract ChaingeFinance_exp -vvv
 ```
 
 #### Contract
 
-[Chainge_exp.sol](src/test/2024-04/Chainge_exp.sol)
+[ChaingeFinance_exp.sol](src/test/2024-04/ChaingeFinance_exp.sol)
 
 ### Link reference
 
@@ -2395,7 +2559,7 @@ https://twitter.com/CyversAlerts/status/1779875922381860920
 ### Lost: ~20K
 
 ```sh
-forge test --contracts ./src/test/2024-04/Hackathon_exp.sol -vvv
+forge test --match-contract Hackathon_exp -vvv
 ```
 
 #### Contract
@@ -2413,7 +2577,7 @@ https://x.com/EXVULSEC/status/1779519508375613827
 ### Lost: ~14 BNB
 
 ```sh
-forge test --contracts ./src/test/2024-04/FIL314_exp.sol -vvv
+forge test --match-contract FIL314_exp -vvv
 ```
 
 #### Contract
@@ -2429,7 +2593,7 @@ forge test --contracts ./src/test/2024-04/FIL314_exp.sol -vvv
 ### Lost: 350K
 
 ```sh
-forge test --contracts ./src/test/2024-04/SumerMoney_exp.sol -vvv
+forge test --match-contract SumerMoney_exp -vvv
 ```
 
 #### Contract
@@ -2447,7 +2611,7 @@ https://twitter.com/0xNickLFranklin/status/1778986926705672698
 ### Lost: $~150 BNB
 
 ```
-forge test --contracts ./src/test/2024-04/GROKD_exp.sol -vvv
+forge test --match-contract GROKD_exp -vvv
 ```
 
 #### Contract
@@ -2465,7 +2629,7 @@ https://x.com/hipalex921/status/1778482890705416323?t=KvvG83s7SXr9I55aftOc6w&s=0
 ### Lost: $~5K $BUSD
 
 ```
-forge test --contracts ./src/test/2024-04/BigBangSwap_exp.sol -vvv
+forge test --match-contract BigBangSwap_exp -vvv
 ```
 
 #### Contract
@@ -2483,7 +2647,7 @@ https://x.com/ChainAegis/status/1778254222288621912
 ### Lost: $~28K USD
 
 ```
-forge test --contracts ./src/test/2024-04/UPS_exp.sol -vvv
+forge test --match-contract UPS_exp -vvv
 ```
 
 #### Contract
@@ -2501,7 +2665,7 @@ https://twitter.com/0xNickLFranklin/status/1777589021058728214
 ### Lost: $~87K USD
 
 ```
-forge test --contracts ./src/test/2024-04/SQUID_exp.sol -vvv
+forge test --match-contract SQUID_exp -vvv
 ```
 
 #### Contract
@@ -2519,7 +2683,7 @@ https://twitter.com/bbbb/status/1777228277415039304
 ### Lost: $~18K USD
 
 ```
-forge test --contracts ./src/test/2024-04/WSM_exp.sol -vvv
+forge test --match-contract WSM_exp -vvv
 ```
 
 #### Contract
@@ -2537,7 +2701,7 @@ https://hacked.slowmist.io/#:~:text=Hacked%20target%3A%20Wall%20Street%20Memes
 ### Lost: ~0.3 ETH
 
 ```
-forge test --contracts ./src/test/2024-04/HoppyFrogERC_exp.sol -vvv --evm-version shanghai
+forge test --match-contract HoppyFrogERC_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2555,7 +2719,7 @@ https://x.com/ChainAegis/status/1775351437410918420
 ### Lost: $~182K USD
 
 ```
-forge test --contracts ./src/test/2024-04/ATM_exp.sol -vvv
+forge test --match-contract ATM_exp -vvv
 ```
 
 #### Contract
@@ -2573,7 +2737,7 @@ https://twitter.com/0xNickLFranklin/status/1775008489569718508
 ### Lost: ~234K
 
 ```
-forge test --contracts src/test/2024-04/OpenLeverage2_exp.sol -vvv
+forge test --match-contract OpenLeverage2_exp -vvv
 ```
 
 #### Contract
@@ -2592,7 +2756,7 @@ https://twitter.com/0xNickLFranklin/status/1774727539975672136
 
 
 ```sh
-forge test --contracts ./src/test/2024-03/ETHFIN_exp.sol -vvv --evm-version shanghai
+forge test --match-contract ETHFIN_exp -vvv --evm-version shanghai
 ```
 #### Contract
 
@@ -2609,7 +2773,7 @@ https://app.blocksec.com/explorer/tx/bsc/0xfe031685d84f3bae1785f5b2bd0ed480b8781
 ### Lost: $~11M
 
 ```sh
-forge test --contracts ./src/test/2024-03/Prisma_exp.sol -vvv
+forge test --match-contract Prisma_exp -vvv
 ```
 
 #### Contract
@@ -2627,7 +2791,7 @@ https://twitter.com/EXVULSEC/status/1773371049951797485
 ### Lost: ~340K
 
 ```
-forge test --contracts src/test/2024-03/LavaLending_exp.sol -vvv
+forge test --match-contract LavaLending_exp -vvv
 ```
 
 #### Contract
@@ -2649,7 +2813,7 @@ https://hackmd.io/@LavaSecurity/03282024
 ### Lost: ~223K
 
 ```
-forge test --contracts src/test/2024-03/ZongZi_exp.sol -vvv
+forge test --match-contract ZongZi_exp -vvv
 ```
 
 #### Contract
@@ -2667,7 +2831,7 @@ https://twitter.com/0xNickLFranklin/status/1772195949638775262
 ### Lost: 996B (CGT token)
 
 ```sh
-forge test --contracts ./src/test/2024-03/CGT_exp.sol -vvv
+forge test --match-contract CGT_exp -vvv
 ```
 
 #### Contract
@@ -2685,7 +2849,7 @@ https://x.com/AnciliaInc/status/1771598968448745536
 ### Lost: 4.8M
 
 ```sh
-forge test --contracts ./src/test/2024-03/SSS_exp.sol -vvv
+forge test --match-contract SSS_exp -vvv
 ```
 
 #### Contract
@@ -2703,7 +2867,7 @@ https://twitter.com/dot_pengun/status/1770989208125272481
 ### Lost: ~348BNB
 
 ```
-forge test --contracts src/test/2024-03/ARK_exp.sol -vvv
+forge test --match-contract ARK_exp -vvv
 ```
 
 #### Contract
@@ -2721,7 +2885,7 @@ https://twitter.com/Phalcon_xyz/status/1771728823534375249
 ### Lost: ~24K
 
 ```
-forge test --contracts src/test/2024-03/Paraswap_exp.sol -vvv --evm-version shanghai
+forge test --match-contract Paraswap_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2739,7 +2903,7 @@ https://medium.com/neptune-mutual/analysis-of-the-paraswap-exploit-1f97c604b4fe
 ### Lost: ~413k USDT
 
 ```
-forge test --contracts src/test/2024-03/MO_exp.sol -vvv
+forge test --match-contract MO_exp -vvv
 ```
 
 #### Contract
@@ -2757,7 +2921,7 @@ https://twitter.com/0xNickLFranklin/status/1768184024483430523
 ### Lost: ~13k USDT
 
 ```
-forge test --via-ir  --contracts src/test/2024-03/IT_exp.sol -vvv
+forge test --via-ir ---match-contract IT_exp -vvv
 ```
 
 #### Contract
@@ -2775,7 +2939,7 @@ https://twitter.com/0xNickLFranklin/status/1768171595561046489
 ### Lost: ~5.06 ETH
 
 ```
-forge test  --contracts src/test/2024-03/BBT_exp.sol -vvv
+forge test --match-contract BBT_exp -vvv
 ```
 
 #### Contract
@@ -2793,7 +2957,7 @@ https://x.com/8olidity/status/1767470002566058088
 ### Lost: ~0.2 BNB
 
 ```
-forge test --contracts src/test/2024-03/Binemon_exp.sol -vvv
+forge test --match-contract Binemon_exp -vvv
 ```
 
 #### Contract
@@ -2811,7 +2975,7 @@ https://app.blocksec.com/explorer/tx/bsc/0x1999bb5c11a8d8bfa7620fc5cc37f5bc59c1a
 ### Lost: ~54 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-03/Juice_exp.sol -vvv --evm-version shanghai
+forge test --match-contract Juice_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -2829,7 +2993,7 @@ https://medium.com/@juicebotapp/juice-staking-exploit-next-steps-95e218b3ec71
 ### Lost: ~2M
 
 ```
-forge test --contracts src/test/2024-03/UnizenIO_exp.sol -vvvv
+forge test --match-contract UnizenIO_exp -vvvv
 ```
 
 #### Contract
@@ -2849,7 +3013,7 @@ https://twitter.com/AnciliaInc/status/1766261463025684707
 ### Lost: ~57K
 
 ```
-forge test --contracts ./src/test/2024-03/GHT_exp.sol -vvv
+forge test --match-contract GHT_exp -vvv
 ```
 
 #### Contract
@@ -2867,7 +3031,7 @@ forge test --contracts ./src/test/2024-03/GHT_exp.sol -vvv
 Testing
 
 ```
-forge test --contracts ./src/test/2024-03/ALP_exp.sol -vvv
+forge test --match-contract ALP_exp -vvv
 ```
 
 #### Contract
@@ -2885,7 +3049,7 @@ https://twitter.com/0xNickLFranklin/status/1765296663667875880
 ### Lost: ~150K
 
 ```
-forge test --contracts ./src/test/2024-03/TGBS_exp.sol -vvv
+forge test --match-contract TGBS_exp -vvv
 ```
 
 #### Contract
@@ -2905,7 +3069,7 @@ https://twitter.com/Phalcon_xyz/status/1765285257949974747
 ### Lost: ~8M
 
 ```
-forge test --contracts ./src/test/2024-03/Woofi_exp.sol -vvv
+forge test --match-contract Woofi_exp -vvv
 ```
 
 #### Contract
@@ -2924,7 +3088,7 @@ https://twitter.com/PeckShieldAlert/status/1765054155478175943
 ### Lost: ~6M
 
 ```
-forge test --contracts ./src/test/2024-02/Seneca_exp.sol -vvv
+forge test --match-contract Seneca_exp -vvv
 ```
 
 #### Contract
@@ -2942,7 +3106,7 @@ https://twitter.com/Phalcon_xyz/status/1763045563040411876
 ### Lost: Unclear
 
 ```
-forge test --contracts ./src/test/2024-02/SMOOFSStaking_exp.sol -vvv
+forge test --match-contract SMOOFSStaking_exp -vvv
 ```
 
 #### Contract
@@ -2962,7 +3126,7 @@ https://twitter.com/0xNickLFranklin/status/1762895774311178251
 ### Lost: ~14 ETH
 
 ```
-forge test --contracts ./src/test/2024-02/Zoomer_exp.sol -vvv --evm-version "shanghai"
+forge test --match-contract Zoomer_exp -vvv --evm-version "shanghai"
 ```
 
 #### Contract
@@ -2980,7 +3144,7 @@ https://x.com/ChainAegis/status/1761246415488225668
 ### Lost: ~439,537 USD
 
 ```
-forge test --contracts ./src/test/2024-02/CompoundUni_exp.sol -vvv
+forge test --match-contract CompoundUni_exp -vvv
 ```
 
 #### Contract
@@ -2998,7 +3162,7 @@ https://twitter.com/0xLEVI104/status/1762092203894276481
 ### Lost: ~1,400,000 USD
 
 ```
-forge test --contracts ./src/test/2024-02/BlueberryProtocol_exp.sol -vvv
+forge test --match-contract BlueberryProtocol_exp -vvv
 ```
 
 #### Contract
@@ -3016,7 +3180,7 @@ https://twitter.com/blueberryFDN/status/1760865357236211964
 ### Lost: ~7k $DAI
 
 ```
-forge test --contracts ./src/test/2024-02/SwarmMarkets_exp.sol -vvv
+forge test --match-contract SwarmMarkets_exp -vvv
 ```
 
 #### Contract
@@ -3034,7 +3198,7 @@ https://app.blocksec.com/explorer/tx/eth/0xa4d7ee2ddb9db06961a17e2a5ae71743a266b
 ### Lost: ~170k
 
 ```
-forge test --contracts ./src/test/2024-02/DeezNutz404_exp.sol -vvv
+forge test --match-contract DeezNutz404_exp -vvv
 ```
 
 #### Contract
@@ -3052,7 +3216,7 @@ https://twitter.com/0xNickLFranklin/status/1760481343161700523
 ### Lost: ~6.4 ETH
 
 ```
-forge test --contracts ./src/test/2024-02/GAIN_exp.sol -vvv
+forge test --match-contract GAIN_exp -vvv
 ```
 
 #### Contract
@@ -3070,7 +3234,7 @@ https://twitter.com/0xNickLFranklin/status/1760559768241160679
 ### Lost: ~2 ETH
 
 ```
-forge test --contracts ./src/test/2024-02/EGGX_exp.sol -vvv
+forge test --match-contract EGGX_exp -vvv
 ```
 
 #### Contract
@@ -3088,7 +3252,7 @@ https://x.com/PeiQi_0/status/1759826303044497726
 ### Lost: ~10k
 
 ```
-forge test --contracts ./src/test/2024-02/RuggedArt_exp.sol -vvv
+forge test --match-contract RuggedArt_exp -vvv
 ```
 
 #### Contract
@@ -3106,7 +3270,7 @@ https://twitter.com/EXVULSEC/status/1759822545875025953
 ### Lost: ~50k
 
 ```
-forge test --contracts ./src/test/2024-02/ParticleTrade_exp.sol -vvv
+forge test --match-contract ParticleTrade_exp -vvv
 ```
 
 #### Contract
@@ -3124,7 +3288,7 @@ https://twitter.com/Phalcon_xyz/status/1758028270770250134
 ### Lost: ~42k
 
 ```
-forge test --contracts ./src/test/2024-02/DualPools_exp.sol -vvvv
+forge test --match-contract DualPools_exp -vvvv
 ```
 
 #### Contract
@@ -3142,7 +3306,7 @@ https://medium.com/@lunaray/dualpools-hack-analysis-5209233801fa
 ### Lost: ~2 $BNB
 
 ```
-forge test --contracts ./src/test/2024-02/Babyloogn_exp.sol -vvvv
+forge test --match-contract Babyloogn_exp -vvvv
 ```
 
 #### Contract
@@ -3160,7 +3324,7 @@ https://app.blocksec.com/explorer/tx/bsc/0xd081d6bb96326be5305a6c00dd51d17999717
 ### Lost: ~150k
 
 ```
-forge test --contracts ./src/test/2024-02/Miner_exp.sol -vvv --evm-version shanghai
+forge test --match-contract Miner_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -3179,7 +3343,7 @@ https://twitter.com/Phalcon_xyz/status/1757777340002681326
 
 
 ```sh
-forge test --contracts ./src/test/2024-02/MINER_bsc_exp.sol -vvv --evm-version shanghai
+forge test --match-contract MINER_bsc_exp -vvv --evm-version shanghai
 ```
 #### Contract
 
@@ -3196,7 +3360,7 @@ https://app.blocksec.com/explorer/tx/bsc/0x15ab671c9bf918fa4b6a9eed9ccb527f32aca
 ### Lost: ~20 ETH
 
 ```
-forge test --contracts ./src/test/2024-02/Game_exp.sol -vvv
+forge test --match-contract Game_exp -vvv
 ```
 
 #### Contract
@@ -3214,7 +3378,7 @@ https://twitter.com/AnciliaInc/status/1757533144033739116
 ### Lost: 200K
 
 ```sh
-forge test --contracts ./src/test/2024-02/DN404_exp.sol -vvv
+forge test --match-contract DN404_exp -vvv
 ```
 
 #### Contract
@@ -3228,7 +3392,7 @@ forge test --contracts ./src/test/2024-02/DN404_exp.sol -vvv
 ### Lost: ~17K USD
 
 ```
-forge test --contracts ./src/test/2024-02/PANDORA_exp.sol -vvv
+forge test --match-contract PANDORA_exp -vvv
 ```
 
 #### Contract
@@ -3246,7 +3410,7 @@ https://twitter.com/pennysplayer/status/1766479470058406174
 ### Lost: ~67K
 
 ```
-forge test --contracts ./src/test/2024-02/BurnsDefi_exp.sol -vvv
+forge test --match-contract BurnsDefi_exp -vvv
 ```
 
 #### Contract
@@ -3266,7 +3430,7 @@ https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408
 ### Lost: ~20 eth
 
 ```
-forge test --contracts ./src/test/2024-02/ADC_exp.sol -vvv
+forge test --match-contract ADC_exp -vvv
 ```
 
 #### Contract
@@ -3284,7 +3448,7 @@ https://x.com/EXVULSEC/status/1753294675971313790
 ### Lost: ~88K
 
 ```
-forge test --contracts ./src/test/2024-02/AffineDeFi_exp.sol -vvv
+forge test --match-contract AffineDeFi_exp -vvv
 ```
 
 #### Contract
@@ -3304,7 +3468,7 @@ https://twitter.com/CyversAlerts/status/1753040754287513655
 ### Lost: ~51K USD
 
 ```
-forge test --contracts ./src/test/2024-01/XSIJ_exp.sol -vvv
+forge test --match-contract XSIJ_exp -vvv
 ```
 
 #### Contract
@@ -3322,7 +3486,7 @@ https://x.com/CertiKAlert/status/1752384801535918264
 ### Lost: ~6,5M
 
 ```
-forge test --contracts ./src/test/2024-01/MIMSpell2_exp.sol -vvv
+forge test --match-contract MIMSpell2_exp -vvv
 ```
 
 #### Contract
@@ -3346,7 +3510,7 @@ https://phalcon.blocksec.com/explorer/security-incidents
 ### Lost: ~1K $DAI
 
 ```
-forge test --contracts ./src/test/2024-01/PeapodsFinance_exp.sol -vvv
+forge test --match-contract PeapodsFinance_exp -vvv
 ```
 
 #### Contract
@@ -3364,7 +3528,7 @@ https://app.blocksec.com/explorer/tx/eth/0x95c1604789c93f41940a7fd9eca11276975a9
 ### Lost: ~130K
 
 ```
-forge test --contracts ./src/test/2024-01/BarleyFinance_exp.sol -vvv
+forge test --match-contract BarleyFinance_exp -vvv
 ```
 
 #### Contract
@@ -3386,7 +3550,7 @@ https://twitter.com/Phalcon_xyz/status/1751788389139992824
 ### Lost: ~93K
 
 ```
-forge test --contracts ./src/test/2024-01/CitadelFinance_exp.sol -vvv
+forge test --match-contract CitadelFinance_exp -vvv
 ```
 
 #### Contract
@@ -3404,7 +3568,7 @@ https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408
 ### Lost: ~180K
 
 ```
-forge test --contracts ./src/test/2024-01/NBLGAME_exp.sol -vvv
+forge test --match-contract NBLGAME_exp -vvv
 ```
 
 #### Contract
@@ -3424,7 +3588,7 @@ https://twitter.com/AnciliaInc/status/1750558426382635036
 ### Lost: ~319K
 
 ```
-forge test --contracts ./src/test/2024-01/DAO_SoulMate_exp.sol -vvv --evm-version 'shanghai'
+forge test --match-contract DAO_SoulMate_exp -vvv --evm-version 'shanghai'
 ```
 
 #### Contract
@@ -3442,7 +3606,7 @@ https://twitter.com/MetaSec_xyz/status/1749743245599617282
 ### Lost: ~114K
 
 ```
-forge test --contracts ./src/test/2024-01/Bmizapper_exp.sol -vvv
+forge test --match-contract Bmizapper_exp -vvv
 ```
 
 #### Contract
@@ -3460,7 +3624,7 @@ https://x.com/0xmstore/status/1747756898172952725
 ### Lost: ~1K $BUSD
 
 ```
-forge test --contracts ./src/test/2024-01/Shell_MEV_0xa898_exp.sol -vvv
+forge test --match-contract Shell_MEV_0xa898_exp -vvv
 ```
 
 #### Contract
@@ -3478,7 +3642,7 @@ https://app.blocksec.com/explorer/tx/bsc/0x24f114c0ef65d39e0988d164e052ce8052fe4
 ### Lost: ~3.3Million $
 
 ```
-forge test --contracts ./src/test/2024-01/SocketGateway_exp.sol -vvv --evm-version shanghai
+forge test --match-contract SocketGateway_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -3498,7 +3662,7 @@ https://twitter.com/peckshield/status/1747353782004900274
 ### Lost: ~464K
 
 ```
-forge test --contracts ./src/test/2024-01/WiseLending02_exp.sol -vvv --evm-version shanghai
+forge test --match-contract WiseLending02_exp -vvv --evm-version shanghai
 ```
 
 #### Contract
@@ -3516,7 +3680,7 @@ https://twitter.com/danielvf/status/1746303616778981402
 ### Lost: 74 $WBNB
 
 ```
-forge test --contracts src/test/2024-01/Freedom_exp.sol -vvv
+forge test --match-contract Freedom_exp -vvv
 ```
 
 #### Contract
@@ -3534,7 +3698,7 @@ https://app.blocksec.com/explorer/tx/bsc/0x309523343cc1bb9d28b960ebf83175fac941b
 ### Lost: unknown
 
 ```
-forge test --contracts src/test/2024-01/LQDX_alert_exp.sol -vvv
+forge test --match-contract LQDX_alert_exp -vvv
 ```
 
 #### Contract
@@ -3552,7 +3716,7 @@ https://twitter.com/SlowMist_Team/status/1744972012865671452
 ### Lost: ~6.3M
 
 ```
-forge test --contracts ./src/test/2024-01/Gamma_exp.sol -vvv
+forge test --match-contract Gamma_exp -vvv
 ```
 
 #### Contract
@@ -3572,7 +3736,7 @@ https://twitter.com/shoucccc/status/1742765618984829326
 ### Lost: ~500K
 
 ```
-forge test --contracts ./src/test/2024-01/MIC_exp.sol -vvv
+forge test --match-contract MIC_exp -vvv
 ```
 
 #### Contract
@@ -3590,7 +3754,7 @@ https://x.com/MetaSec_xyz/status/1742484748239536173
 ### Lost: ~4,5M
 
 ```
-forge test --contracts ./src/test/2024-01/RadiantCapital_exp.sol -vvv
+forge test --match-contract RadiantCapital_exp -vvv
 ```
 
 #### Contract
@@ -3610,7 +3774,7 @@ https://twitter.com/BeosinAlert/status/1742389285926678784
 ### Lost: ~81M
 
 ```
-forge test --contracts ./src/test/2024-01/OrbitChain_exp.sol -vvv
+forge test --match-contract OrbitChain_exp -vvv
 ```
 
 #### Contract
