@@ -32,7 +32,7 @@ library TokenHelper {
         return abi.decode(result, (string));
     }
 
-    function approveToken(address token, address spender, uint spendAmount) internal returns (bool) {
+    function approveToken(address token, address spender, uint256 spendAmount) internal returns (bool) {
         bytes memory result = callTokenFunction(
             token,
             abi.encodeWithSignature("approve(address,uint256)", spender, spendAmount),
@@ -41,7 +41,7 @@ library TokenHelper {
         return abi.decode(result, (bool));
     }
 
-    function transferToken(address token, address receiver, uint amount) internal returns (bool) {
+    function transferToken(address token, address receiver, uint256 amount) internal returns (bool) {
         bytes memory result = callTokenFunction(
             token,
             abi.encodeWithSignature("transfer(address,uint256)", receiver, amount),

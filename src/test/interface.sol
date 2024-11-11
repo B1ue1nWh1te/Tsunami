@@ -395,7 +395,7 @@ interface IUniswapV2Pair {
     function approve(address spender, uint256 value) external returns (bool);
     function transfer(address to, uint256 value) external returns (bool);
     function transferFrom(address from, address to, uint256 value) external returns (bool);
-    function burn(address to) external returns (uint amount0, uint amount1);
+    function burn(address to) external returns (uint256 amount0, uint256 amount1);
 }
 
 interface IBacon {
@@ -5197,20 +5197,8 @@ interface IPancakeV3Pool is
 {}
 
 interface ILoanTokenLogicWeth {
-        function mintWithEther(
-        address receiver)
-        external
-        payable
-        returns (uint256 mintAmount);
-    function burnToEther(
-        address receiver,
-        uint256 burnAmount)
-        external
-    returns (uint256 loanAmountPaid);
-    function transfer(
-        address _to,
-        uint256 _value)
-        external
-    returns (bool);
+    function mintWithEther(address receiver) external payable returns (uint256 mintAmount);
+    function burnToEther(address receiver, uint256 burnAmount) external returns (uint256 loanAmountPaid);
+    function transfer(address _to, uint256 _value) external returns (bool);
     function balanceOf(address _who) external view returns (uint256);
 }
