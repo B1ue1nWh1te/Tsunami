@@ -9,6 +9,8 @@ eth = "https://rpc.ankr.com/eth"
 bsc = "https://rpc.ankr.com/bsc"
 base = "https://rpc.ankr.com/base"
 polygon = "https://rpc.ankr.com/polygon"
+arb = "https://rpc.ankr.com/arbitrum"
+optimism = "https://rpc.ankr.com/optimism"
 
 [fmt]
 line_length = 120
@@ -23,6 +25,3 @@ single_line_statement_blocks = 'preserve'
 variable_override_spacing = true
 wrap_comments = false
 ignore = []
-
-
-
