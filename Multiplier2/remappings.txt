@@ -1,2 +1,0 @@
-forge-std/=lib/forge-std/src/
-Contract.sol/=src/Contract.sol/

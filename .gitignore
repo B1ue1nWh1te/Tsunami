@@ -1,4 +1,6 @@
 /.vscode/
 /cache/
+/dependencies/
 /out/
 /tsunami/private/
+.env

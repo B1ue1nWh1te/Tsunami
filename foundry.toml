@@ -1,16 +1,28 @@
+[rpc_endpoints]
+eth = "${ETH_RPC_URL}"
+bsc = "${BSC_RPC_URL}"
+base = "${BASE_RPC_URL}"
+polygon = "${POLYGON_RPC_URL}"
+arbitrum = "${ARBITRUM_RPC_URL}"
+optimism = "${OPTIMISM_RPC_URL}"
+
+[etherscan]
+eth = { key = "${ETH_SCAN_API_KEY}", chain = "mainnet"  }
+bsc = { key = "${BSC_SCAN_API_KEY}", chain = "bsc"  }
+base = { key = "${BASE_SCAN_API_KEY}", chain = "base"  }
+polygon = { key = "${POLYGON_SCAN_API_KEY}", chain = "polygon"  }
+arbitrum = { key = "${ARBITRUM_SCAN_API_KEY}", chain = "arbitrum"  }
+optimism = { key = "${OPTIMISM_SCAN_API_KEY}", chain = "optimism"  }
+
 [profile.default]
-src = 'src'
-out = 'out'
-libs = ['lib']
+src = "src"
+out = "out"
+libs = ["dependencies"]
 fs_permissions = [{ access = "read", path = "./"}]
 
-[rpc_endpoints]
-eth = "https://rpc.ankr.com/eth"
-bsc = "https://rpc.ankr.com/bsc"
-base = "https://rpc.ankr.com/base"
-polygon = "https://rpc.ankr.com/polygon"
-arb = "https://rpc.ankr.com/arbitrum"
-optimism = "https://rpc.ankr.com/optimism"
+[dependencies]
+"forge-std" = "1.9.4"
+"@openzeppelin-contracts" = "5.1.0"
 
 [fmt]
 line_length = 120
@@ -21,7 +33,7 @@ func_attrs_with_params_multiline = false
 quote_style = "double"
 number_underscore = "thousands"
 multiline_func_header = "params_first"
-single_line_statement_blocks = 'preserve'
+single_line_statement_blocks = "preserve"
 variable_override_spacing = true
 wrap_comments = false
 ignore = []
