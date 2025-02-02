@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-543 incidents included.
+554 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,7 +49,29 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20250118 Paribus](#20250118-paribus---bad-oracle)
+
+[20250113 Mosca2](#20250113-mosca2---logic-flaw)
+
+[20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
+
+[20250110 JPulsepot](#20250110-jpulsepot---logic-flaw)
+
+[20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
+
+[20250107 IPC](#20250106-mosca---logic-flaw)
+
+[20250106 Mosca](#20250106-mosca---logic-flaw)
+
+[20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
+
+[20250104 98#Token](#20250104-98Token---Unprotected-public-function)
+
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
+
+[20241223 Moonhacker](#20241223-moonhacker---improper-input-validation)
+
+[20241203 Pledge](#20241203-pledge---access-control)
 
 [20241119 PolterFinance](#20241119-polterfinance---flashloan-attack)
 
@@ -1173,6 +1195,144 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20250118 Paribus - Bad oracle
+
+### Lost: ~86k
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Paribus_exp.sol -vvv
+```
+#### Contract
+[Paribus_exp.sol](src/test/2025-01/Paribus_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/arbitrum/0xf5e753d3da60db214f2261343c1e1bc46e674d2fa4b7a953eaf3c52123aeebd2?line=415
+
+---
+
+### 20250113 Mosca2 - Logic Flaw
+
+### Lost: 37.6K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Mosca2_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Mosca2_exp.sol](src/test/2025-01/Mosca2_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1878699517450883407
+
+---
+
+### 20250111 RoulettePotV2 - Price Manipulation
+
+### Lost: ~28K
+
+```sh
+forge test --contracts ./src/test/2025-01/RoulettePotV2_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[RoulettePotV2_exp.sol](src/test/2025-01/RoulettePotV2_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1878008055717376068
+
+---
+
+### 20250110 JPulsepot - Logic Flaw
+
+### Lost: 21.5K
+
+```sh
+forge test --contracts ./src/test/2025-01/JPulsepot_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JPulsepot_exp.sol](src/test/2025-01/JPulsepot_exp.sol)
+### Link reference
+
+https://x.com/CertiKAlert/status/1877662352834793639
+
+---
+
+### 20250108 LPMine - Incorrect reward calculation 
+
+### Lost: ~24k USDT
+
+```sh
+forge test --contracts ./src/test/2025-01/LPMine.sol  -vvv --evm-version cancun
+```
+#### Contract
+[LPMine_exp.sol](src/test/2025-01/LPMine_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1877030261067571234
+
+---
+
+### 20250107 IPC Incorrect burn pairs
+
+### Lost: ～590k USDT
+
+```sh
+forge test --contracts ./src/test/2025-01/IPC_exp.sol  -vvv --evm-version cancun
+```
+#### Contract
+[IPC_exp.sol](src/test/2025-01/IPC_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1876663900663370056
+
+---
+
+### 20250106 Mosca - Logic Flaw
+
+### Lost: 19K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Mosca_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Mosca_exp.sol](src/test/2025-01/Mosca_exp.sol)
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1876884383736430821
+
+---
+
+### 20250104 SorStaking - Incorrect reward calculation
+
+### Lost: ～8 ETH
+
+```sh
+forge test --contracts ./src/test/2025-01/sorraStaking.sol  -vv --evm-version cancun
+```
+#### Contract
+[sorraStaking.sol](src/test/2025-01/sorraStaking.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1875582709512188394
+
+---
+
+### 20250104 98Token - Unprotected public function
+
+### Lost: 28K USDT
+
+```sh
+forge test --contracts ./src/test/2025-01/98Token_exp.sol  -vvvv --evm-version cancun
+```
+#### Contract
+[98#Token_exp.sol](src/test/2025-01/98Token_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1875462686353363435
+
+---
+
 ### 20250101 LAURAToken - Pair Balance Manipulation
 
 ### Lost: 12.34 ETH (~$41.2K USD)
@@ -1185,6 +1345,38 @@ forge test --contracts ./src/test/2025-01/LAURAToken_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1874455664187023752
+
+---
+
+### 20241223 Moonhacker - improper input validation
+
+### Lost:  318.9 k
+
+
+```sh
+forge test --contracts ./src/test/2024-12/Moonhacker_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Moonhacker_exp.sol](src/test/2024-12/Moonhacker_exp.sol)
+### Link reference
+
+https://blog.solidityscan.com/moonhacker-vault-hack-analysis-ab122cb226f6
+
+---
+
+### 20241203 Pledge - Access Control
+
+### Lost: 15K
+
+
+```sh
+forge test --contracts ./src/test/2024-12/Pledge_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Pledge_exp.sol](src/test/2024-12/Pledge_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1864126176848965810
 
 ---
 

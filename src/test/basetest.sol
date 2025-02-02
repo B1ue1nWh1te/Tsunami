@@ -37,7 +37,7 @@ contract BaseTestWithBalanceLog is Test {
 
     function getChainSymbol(uint256 chainId) internal view returns (string memory symbol) {
         (, symbol) = getChainInfo(chainId);
-        //Return eth as default if chainid is not registed in mapping
+        //Return eth as default if chainid is not registered in mapping
         // Return eth as default if chainid is not registered in mapping
         if (bytes(symbol).length == 0) {
             symbol = "ETH";
