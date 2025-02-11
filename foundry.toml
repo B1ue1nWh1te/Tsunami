@@ -16,8 +16,8 @@ fs_permissions = [{ access = "read", path = "./" }]
 evm_version = 'shanghai'
 
 [dependencies]
-"forge-std" = "1.9.4"
-"@openzeppelin-contracts" = "5.1.0"
+"forge-std" = "1.9.6"
+"@openzeppelin-contracts" = "5.2.0"
 
 [fmt]
 line_length = 120
