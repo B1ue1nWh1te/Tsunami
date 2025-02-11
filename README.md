@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-554 incidents included.
+556 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20250123 ODOS](#20250123-ODOS---invalid-signature-verification)
+
+[20250121 Ast](#20250121-ast---Price-Manipulation)
+
 [20250118 Paribus](#20250118-paribus---bad-oracle)
 
 [20250113 Mosca2](#20250113-mosca2---logic-flaw)
@@ -68,6 +72,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250104 98#Token](#20250104-98Token---Unprotected-public-function)
 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
+
+<details> <summary> 2024 </summary>
 
 [20241223 Moonhacker](#20241223-moonhacker---improper-input-validation)
 
@@ -374,6 +380,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240102 RadiantCapital](#20240102-radiantcapital---loss-of-precision)
 
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
+
+</details>
 
 <details> <summary> 2023 </summary>
 
@@ -1194,6 +1202,34 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250123 ODOS - invalid-signature-verification
+
+### Lost: ~50k
+
+```sh
+forge test --contracts ./src/test/2025-01/ODOS_exp.sol -vvv
+```
+#### Contract
+[OODS_exp.sol](src/test/2025-01/OODS_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/base/0xd10faa5b33ddb501b1dc6430896c966048271f2510ff9ed681dd6d510c5df9f6
+
+### 20250121 Ast - Price-Manipulation
+
+### Lost: ~65K
+
+```sh
+forge test --contracts ./src/test/2025-01/Ast_exp.sol -vvv
+```
+#### Contract
+[Ast_exp.sol](src/test/2025-01/Ast_exp.sol)
+### Link reference
+
+https://medium.com/@joichiro.sai/ast-token-hack-how-a-faulty-transfer-logic-led-to-a-65k-exploit-da75aed59a43
+
+---
 
 ### 20250118 Paribus - Bad oracle
 

@@ -9,10 +9,11 @@ bsc = { key = "${BSC_SCAN_API_KEY}", chain = "bsc" }
 base = { key = "${BASE_SCAN_API_KEY}", chain = "base" }
 
 [profile.default]
-src = "src"
-out = "out"
-libs = ["dependencies"]
+src = 'src'
+out = 'out'
+libs = ['lib']
 fs_permissions = [{ access = "read", path = "./" }]
+evm_version = 'shanghai'
 
 [dependencies]
 "forge-std" = "1.9.4"
