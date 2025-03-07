@@ -9,12 +9,14 @@ bsc = { key = "${BSC_SCAN_API_KEY}", chain = "bsc" }
 base = { key = "${BASE_SCAN_API_KEY}", chain = "base" }
 
 [profile.default]
-src = "tsunami"
-fs_permissions = [{ access = "read", path = "./" }]
+solc_version = "0.8.28"
+evm_version = "cancun"
 optimizer = true
 optimizer_runs = 200
 bytecode_hash = "none"
 cbor_metadata = false
+src = "tsunami"
+fs_permissions = [{ access = "read", path = "./" }]
 
 [dependencies]
 "@openzeppelin-contracts" = "5.2.0"
