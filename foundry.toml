@@ -1,12 +1,16 @@
 [rpc_endpoints]
-eth = "${ETH_RPC_URL}"
 bsc = "${BSC_RPC_URL}"
+bsc-testnet = "${BSC_TESTNET_RPC_URL}"
+
+eth = "${ETH_RPC_URL}"
 base = "${BASE_RPC_URL}"
 sepolia = "${SEPOLIA_RPC_URL}"
 
 [etherscan]
-eth = { key = "${ETH_SCAN_API_KEY}", chain = "mainnet" }
 bsc = { key = "${BSC_SCAN_API_KEY}", chain = "bsc" }
+bsc-testnet = { key = "${BSC_TESTNET_SCAN_API_KEY}", chain = "bsc-testnet" }
+
+eth = { key = "${ETH_SCAN_API_KEY}", chain = "mainnet" }
 base = { key = "${BASE_SCAN_API_KEY}", chain = "base" }
 sepolia = { key = "${SEPOLIA_SCAN_API_KEY}", chain = "sepolia" }
 
