@@ -16,7 +16,7 @@ sepolia = { key = "${SEPOLIA_SCAN_API_KEY}", chain = "sepolia" }
 
 [profile.default]
 solc_version = "0.8.29"
-evm_version = "cancun"
+evm_version = "prague"
 optimizer = true
 optimizer_runs = 200
 bytecode_hash = "none"
